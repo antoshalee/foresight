@@ -7,7 +7,12 @@ gem 'rails', '3.2.7'
 
 gem 'sqlite3'
 gem 'devise'
+gem 'omniauth'
+gem 'oauth2'
+gem 'omniauth-facebook'
 
+gem 'thin'
+gem 'haml'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -22,6 +27,10 @@ group :assets do
 end
 
 gem 'jquery-rails'
+
+group :development do
+  gem 'rb-readline'
+end
 
 group :test, :development do
   gem 'rspec-rails', '~> 2.0'
