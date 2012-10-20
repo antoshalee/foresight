@@ -26,17 +26,12 @@ class MembersController < ApplicationController
     else
       render json: vk_result
     end
-    # url = vk.photos.getUploadServer(aid: aid, gid: gid).upload_url
-    # #puts url.upload_url
-    # upload_response = VkontakteApi.upload(url: url, photo: [offer.image.path, MIME::Types.type_for(offer.image.path)])
-    # save_response = vk.photos.save upload_response
-    # "photo#{save_response[0].owner_id}_#{save_response[0].pid}"
   end
 
   private
 
   def extract_domain_from_vk_url url
-    s = url.scan(/^(http:\/\/)?(vk.com\/|vkontakte.ru\/)?([a-z0-9\.]+)$/)[0]
+    s = url.scan(/^(http:\/\/)?(vk.com\/|vkontakte.ru\/)?([a-z0-9\._]+)$/)[0]
     return s.last if s
     nil
   end
