@@ -1,7 +1,8 @@
 %ul
   - Member.order("rating desc").each do |m|
     %li
-      .member_name
+      %span.member_name
         = m.name
-      .member_rating
+      %span.member_rating
         = m.rating
+      = link_to "Голосовать", vote_member_path(m), remote: true, method: :post

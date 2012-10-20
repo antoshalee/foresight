@@ -3,7 +3,6 @@ class MembersController < ApplicationController
   before_filter :authenticate_user!
 
   def create
-
     domain = extract_domain_from_vk_url params[:vk_url]
     unless domain
       render status: 422, json: {errors: 'Неправильная ссылка'}
@@ -21,7 +20,8 @@ class MembersController < ApplicationController
       member.last_name = vk_result[0]['last_name']
       ActiveRecord::Base.transaction do
         member.save!
-        create_first_vote member
+        # adding a member means automatically voting for him
+        create_vote member
       end
 
     rescue VkontakteApi::Error
@@ -33,10 +33,15 @@ class MembersController < ApplicationController
     end
   end
 
+  def vote
+    member = Member.find params[:id]
+    create_vote member
+  end
+
   private
 
-  # adding a member means automatically voting for him
-  def create_first_vote member
+
+  def create_vote member
     Vote.create!(member: member, user: current_user)
   end
 
