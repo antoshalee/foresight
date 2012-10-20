@@ -1,7 +1,6 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def facebook
     login request.env["omniauth.auth"]
-
   end
 
   def vkontakte

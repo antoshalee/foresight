@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121020041531) do
+ActiveRecord::Schema.define(:version => 20121020060912) do
 
   create_table "auths", :force => true do |t|
     t.string   "provider"
@@ -24,6 +24,21 @@ ActiveRecord::Schema.define(:version => 20121020041531) do
   add_index "auths", ["provider"], :name => "index_auths_on_provider"
   add_index "auths", ["uid"], :name => "index_auths_on_uid"
   add_index "auths", ["user_id"], :name => "index_auths_on_user_id"
+
+  create_table "members", :force => true do |t|
+    t.string   "vkontakte_domain"
+    t.string   "facebook_domain"
+    t.integer  "rating"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "photo"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "members", ["facebook_domain"], :name => "index_members_on_facebook_domain"
+  add_index "members", ["rating"], :name => "index_members_on_rating"
+  add_index "members", ["vkontakte_domain"], :name => "index_members_on_vkontakte_domain"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
