@@ -1,4 +1,7 @@
 %ul
-  - Member.order("rating desc").each |m|
+  - Member.order("rating desc").each do |m|
     %li
-      = m.first_name
+      .member_name
+        = m.name
+      .member_rating
+        = m.rating

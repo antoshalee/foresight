@@ -7,3 +7,4 @@
   = form_tag members_path, remote: true, :'data-type' => :json, class: 'add_member_form' do
     = text_field_tag :vk_url
     = submit_tag 'Добавить участника'
+= render 'rating'
