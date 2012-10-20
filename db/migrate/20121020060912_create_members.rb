@@ -5,7 +5,7 @@ class CreateMembers < ActiveRecord::Migration
       t.string :facebook_uid
       t.string :vkontakte_domain
       t.string :facebook_domain
-      t.integer :rating
+      t.integer :rating, default: 0
       t.string :first_name
       t.string :last_name
       t.string :photo

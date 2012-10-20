@@ -30,13 +30,13 @@ ActiveRecord::Schema.define(:version => 20121020060912) do
     t.string   "facebook_uid"
     t.string   "vkontakte_domain"
     t.string   "facebook_domain"
-    t.integer  "rating"
+    t.integer  "rating",           :default => 0
     t.string   "first_name"
     t.string   "last_name"
     t.string   "photo"
     t.boolean  "activated"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
   add_index "members", ["facebook_uid"], :name => "index_members_on_facebook_uid"
