@@ -13,3 +13,13 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(document).ready(function(){
+	$(".add_member_form")
+      .bind('ajax:success', function(evt, data, status, xhr) {
+      	alert('added');
+      })
+      .bind('ajax:error', function(xhr, status, error) {
+      	console.log($.parseJSON(status.responseText).errors);
+      })
+})

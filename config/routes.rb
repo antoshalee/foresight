@@ -1,6 +1,8 @@
 Foresight::Application.routes.draw do
   devise_for :users, controllers: {omniauth_callbacks: "users/omniauth_callbacks"}
 
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -13,7 +15,7 @@ Foresight::Application.routes.draw do
   # This route can be invoked with purchase_url(:id => product.id)
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
+  resources :members
 
   # Sample resource route with options:
   #   resources :products do

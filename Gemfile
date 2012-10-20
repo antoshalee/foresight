@@ -11,6 +11,7 @@ gem 'omniauth'
 gem 'oauth2'
 gem 'omniauth-facebook'
 gem 'omniauth-vkontakte'
+gem 'vkontakte_api', '~> 1.0'
 
 gem 'thin'
 gem 'haml'

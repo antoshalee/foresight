@@ -1,3 +1,9 @@
 %p Hello world
-= link_to 'Login with Facebook', user_omniauth_authorize_path(:facebook)
-= link_to 'Login with Vkontakte', user_omniauth_authorize_path(:vkontakte)
+- unless user_signed_in?
+  = link_to 'Login with Facebook', user_omniauth_authorize_path(:facebook)
+  = link_to 'Login with Vkontakte', user_omniauth_authorize_path(:vkontakte)
+- else
+  - member = Member.new
+  = form_tag members_path, remote: true, :'data-type' => :json, class: 'add_member_form' do
+    = text_field_tag :vk_url
+    = submit_tag 'Добавить участника'

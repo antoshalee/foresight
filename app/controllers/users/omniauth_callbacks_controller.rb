@@ -4,6 +4,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def vkontakte
+    session['vk_access_token'] = request.env["credentials"]["token"]
     login request.env["omniauth.auth"]
   end
 
