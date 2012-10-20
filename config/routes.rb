@@ -1,5 +1,8 @@
 Foresight::Application.routes.draw do
-  devise_for :users, controllers: {omniauth_callbacks: "users/omniauth_callbacks"}
+  devise_for  :users,
+              #path_names: {sign_out: "logout"},
+              controllers: {omniauth_callbacks: "users/omniauth_callbacks"},
+              sign_out_via: [:delete, :get]
 
 
 

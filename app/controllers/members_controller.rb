@@ -1,5 +1,7 @@
 # -*- encoding : utf-8 -*-
 class MembersController < ApplicationController
+  before_filter :authenticate_user!
+
   def create
 
     domain = extract_domain_from_vk_url params[:vk_url]
@@ -17,8 +19,11 @@ class MembersController < ApplicationController
       member.photo = vk_result[0]['photo_medium']
       member.first_name = vk_result[0]['first_name']
       member.last_name = vk_result[0]['last_name']
-      member.save!
-      #render json: result
+      ActiveRecord::Base.transaction do
+        member.save!
+        create_first_vote member
+      end
+
     rescue VkontakteApi::Error
       render status: 422, json: {errors: 'Не удалось найти пользователя Vk'}
     rescue Exception => e
@@ -29,6 +34,11 @@ class MembersController < ApplicationController
   end
 
   private
+
+  # adding a member means automatically voting for him
+  def create_first_vote member
+    Vote.create!(member: member, user: current_user)
+  end
 
   def extract_domain_from_vk_url url
     s = url.scan(/^(http:\/\/)?(vk.com\/|vkontakte.ru\/)?([a-z0-9\._]+)$/)[0]

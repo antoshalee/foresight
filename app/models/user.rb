@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
 
   has_many :auths, dependent: :destroy, autosave: true
+  has_many :votes
+
 
   devise :database_authenticatable, :registerable, :rememberable, :trackable, :omniauthable
 
