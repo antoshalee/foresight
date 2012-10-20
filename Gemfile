@@ -10,6 +10,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'oauth2'
 gem 'omniauth-facebook'
+gem 'omniauth-vkontakte'
 
 gem 'thin'
 gem 'haml'

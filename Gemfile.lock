@@ -85,6 +85,10 @@ GEM
     omniauth-oauth2 (1.1.0)
       oauth2 (~> 0.8.0)
       omniauth (~> 1.0)
+    omniauth-vkontakte (1.1.0)
+      multi_json
+      omniauth (~> 1.1.0)
+      omniauth-oauth2 (~> 1.0)
     orm_adapter (0.4.0)
     polyglot (0.3.3)
     rack (1.4.1)
@@ -165,6 +169,7 @@ DEPENDENCIES
   oauth2
   omniauth
   omniauth-facebook
+  omniauth-vkontakte
   rails (= 3.2.7)
   rb-readline
   rspec-rails (~> 2.0)
