@@ -1,0 +1,4 @@
+%ul
+  - Member.order("rating desc").each |m|
+    %li
+      = m.first_name

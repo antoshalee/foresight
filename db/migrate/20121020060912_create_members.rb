@@ -9,6 +9,7 @@ class CreateMembers < ActiveRecord::Migration
       t.string :first_name
       t.string :last_name
       t.string :photo
+      t.boolean :activated
       t.timestamps
     end
     add_index :members, :vkontakte_uid
