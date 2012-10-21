@@ -15,11 +15,11 @@
 //= require_tree .
 
 $(document).ready(function(){
-	$(".add_member_form, .destroy_link")
-      .bind('ajax:success', function(evt, data, status, xhr) {
+	$("body")
+      .on('ajax:success', ".add_member_form, .destroy_link", function(evt, data, status, xhr) {
       	refreshRating();
       })
-      .bind('ajax:error', function(xhr, status, error) {
+      .on('ajax:error', ".add_member_form, .destroy_link", function(xhr, status, error) {
       	console.log($.parseJSON(status.responseText).errors);
       })
 })

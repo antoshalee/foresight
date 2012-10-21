@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121021120537) do
+ActiveRecord::Schema.define(:version => 20121021134031) do
 
   create_table "auths", :force => true do |t|
     t.string   "provider"
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(:version => 20121021120537) do
     t.integer  "member_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.text     "message"
   end
 
   add_index "votes", ["member_id"], :name => "index_votes_on_member_id"

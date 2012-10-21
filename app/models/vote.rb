@@ -4,5 +4,5 @@ class Vote < ActiveRecord::Base
 
   validates :user_id, uniqueness: {scope: :member_id}
 
-  attr_accessible :user, :member
+  attr_accessible :user, :member, :message
 end

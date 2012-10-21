@@ -7,7 +7,9 @@
     = link_to 'Выйти', destroy_user_session_path
   - member = Member.new
   = form_tag members_path, remote: true, :'data-type' => :json, class: 'add_member_form' do
-    = text_field_tag :social_url
+    = text_field_tag :social_url, nil, placeholder: 'Ссылка на соц.сеть'
+    %br
+    = text_area_tag :message, nil, placeholder: 'Рекомендация'
     %br
 
     = radio_button_tag("social_network", "vkontakte", true)

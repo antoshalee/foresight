@@ -3,18 +3,34 @@ class MembersController < ApplicationController
   before_filter :authenticate_user!
 
   def create
+    return render_error 'Не заполнено поле Рекомендация' if params[:message].blank?
+
     @social_manager = Social::ManagerFactory.get_manager_by_social_network params[:social_network]
-    return render status: 422, json: {errors: 'Неизвестная соцсеть'} if !@social_manager
+    return render_error 'Неизвестная соцсеть' if !@social_manager
 
     domain = @social_manager.extract_domain_from_url params[:social_url]
     unless domain
       return render status: 422, json: {errors: 'Неправильная ссылка'}
     end
 
-    if params[:social_network] == "vkontakte"
-      create_member_by_vk_domain domain
-    elsif params[:social_network] == "facebook"
-      create_member_by_fb_domain domain
+    begin
+      if params[:social_network] == "vkontakte"
+        @member = build_member_by_vk_domain domain
+      elsif params[:social_network] == "facebook"
+        @member = build_member_by_fb_domain domain
+      end
+      ActiveRecord::Base.transaction do
+        @member.save!
+        create_vote @member, params[:message] # adding a member means automatically voting for him
+      end
+    rescue VkontakteApi::Error
+      render status: 422, json: {errors: 'Не удалось найти пользователя Vk'}
+    rescue FbGraph::Unauthorized
+      render status: 422, json: {errors: 'Не удалось найти пользователя Facebook'}
+    rescue Exception => e
+      render status: 422, json: {errors: 'Произошла ошибка'+e.message}
+    else
+      render 'show'
     end
   end
 
@@ -57,43 +73,20 @@ class MembersController < ApplicationController
 
   private
 
-  def create_member_by_vk_domain domain
-    begin
-      vk = VkontakteApi::Client.new
-      vk_result = vk.users.get uids: domain, fields: 'photo,domain,photo_medium', lang: :ru
-      @member = Member.where(:vkontakte_uid => vk_result[0]['uid'].to_s).first_or_initialize
-
-      fill_member_attributes_by_vk_result(@member, vk_result) if @member.new_record?
-      ActiveRecord::Base.transaction do
-        @member.save!
-        create_vote @member # adding a member means automatically voting for him
-      end
-    rescue VkontakteApi::Error
-      render status: 422, json: {errors: 'Не удалось найти пользователя Vk'}
-    rescue Exception => e
-      render status: 422, json: {errors: 'Произошла ошибка'+e.message}
-    else
-      render 'show'
-    end
+  def build_member_by_vk_domain domain
+    vk = VkontakteApi::Client.new
+    vk_result = vk.users.get uids: domain, fields: 'photo,domain,photo_medium', lang: :ru
+    member = Member.where(:vkontakte_uid => vk_result[0]['uid'].to_s).first_or_initialize
+    fill_member_attributes_by_vk_result(member, vk_result) if member.new_record?
+    member
   end
 
-  def create_member_by_fb_domain domain
-    begin
-      user = FbGraph::User.fetch(domain)
-      member = Member.new
-      @member = Member.where(:facebook_uid => user.identifier.to_s).first_or_initialize
-      fill_member_attributes_by_fb_result(@member, user) if @member.new_record?
-      ActiveRecord::Base.transaction do
-        @member.save!
-        create_vote @member # adding a member means automatically voting for him
-      end
-    rescue FbGraph::Unauthorized
-      render status: 422, json: {errors: 'Не удалось найти пользователя Facebook'}
-    rescue Exception => e
-      render status: 422, json: {errors: 'Произошла ошибка'}
-    else
-      render 'show'
-    end
+  def build_member_by_fb_domain domain
+    user = FbGraph::User.fetch(domain)
+    member = Member.new
+    member = Member.where(:facebook_uid => user.identifier.to_s).first_or_initialize
+    fill_member_attributes_by_fb_result(member, user) if member.new_record?
+    member
   end
 
   def fill_member_attributes_by_fb_result member, fb_result
@@ -112,8 +105,8 @@ class MembersController < ApplicationController
     member.last_name = vk_result[0]['last_name']
   end
 
-  def create_vote member
-    Vote.create!(member: member, user: current_user)
+  def create_vote member, message = nil
+    Vote.create!(member: member, user: current_user, message: message)
   end
 
 end
