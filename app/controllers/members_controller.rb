@@ -3,7 +3,6 @@ class MembersController < ApplicationController
   before_filter :authenticate_user!
 
   def create
-
     @social_manager = Social::ManagerFactory.get_manager_by_social_network params[:social_network]
     return render status: 422, json: {errors: 'Неизвестная соцсеть'} if !@social_manager
 
@@ -50,18 +49,19 @@ class MembersController < ApplicationController
     begin
       vk = VkontakteApi::Client.new
       vk_result = vk.users.get uids: domain, fields: 'photo,domain,photo_medium', lang: :ru
-      member = Member.new
-      fill_member_attributes_by_vk_result(member, vk_result)
+      @member = Member.where(:vkontakte_uid => vk_result[0]['uid'].to_s).first_or_initialize
+
+      fill_member_attributes_by_vk_result(@member, vk_result) if @member.new_record?
       ActiveRecord::Base.transaction do
-        member.save!
-        create_vote member # adding a member means automatically voting for him
+        @member.save!
+        create_vote @member # adding a member means automatically voting for him
       end
     rescue VkontakteApi::Error
       render status: 422, json: {errors: 'Не удалось найти пользователя Vk'}
     rescue Exception => e
-      render status: 422, json: {errors: 'Произошла ошибка'}
+      render status: 422, json: {errors: 'Произошла ошибка'+e.message}
     else
-      render json: {}
+      render 'show'
     end
   end
 
@@ -69,17 +69,18 @@ class MembersController < ApplicationController
     begin
       user = FbGraph::User.fetch(domain)
       member = Member.new
-      fill_member_attributes_by_fb_result(member, user)
+      @member = Member.where(:facebook_uid => user.identifier.to_s).first_or_initialize
+      fill_member_attributes_by_fb_result(@member, user) if @member.new_record?
       ActiveRecord::Base.transaction do
-        member.save!
-        create_vote member # adding a member means automatically voting for him
+        @member.save!
+        create_vote @member # adding a member means automatically voting for him
       end
     rescue FbGraph::Unauthorized
       render status: 422, json: {errors: 'Не удалось найти пользователя Facebook'}
     rescue Exception => e
       render status: 422, json: {errors: 'Произошла ошибка'}
     else
-      render json: {}
+      render 'show'
     end
   end
 
