@@ -10,7 +10,7 @@ class MembersController < ApplicationController
     end
 
     begin
-      vk = VkontakteApi::Client.new session['vk_access_token']
+      vk = VkontakteApi::Client.new
       vk_result = vk.users.get uids: domain, fields: 'photo,domain,photo_medium'
       member = Member.new
       fill_member_attributes_by_vk_result(member, vk_result)
