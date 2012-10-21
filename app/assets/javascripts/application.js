@@ -15,7 +15,7 @@
 //= require_tree .
 
 $(document).ready(function(){
-	$(".add_member_form")
+	$(".add_member_form, .destroy_link")
       .bind('ajax:success', function(evt, data, status, xhr) {
       	refreshRating();
       })

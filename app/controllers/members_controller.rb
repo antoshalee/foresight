@@ -43,6 +43,18 @@ class MembersController < ApplicationController
     end
   end
 
+  def destroy
+    authorize! :destroy, @member
+    @member = Member.find(params[:id])
+    begin
+      @member.destroy
+    rescue Exception => e
+      render status: 422, json: {errors: 'Произошла ошибка' + e.message }
+    else
+      render json: {}
+    end
+  end
+
   private
 
   def create_member_by_vk_domain domain
