@@ -11,7 +11,7 @@ class MembersController < ApplicationController
 
     begin
       vk = VkontakteApi::Client.new
-      vk_result = vk.users.get uids: domain, fields: 'photo,domain,photo_medium'
+      vk_result = vk.users.get uids: domain, fields: 'photo,domain,photo_medium', lang: :ru
       member = Member.new
       fill_member_attributes_by_vk_result(member, vk_result)
       ActiveRecord::Base.transaction do
