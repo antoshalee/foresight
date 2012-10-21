@@ -1,8 +1,9 @@
-%ul
-  - Member.order("rating desc").each do |m|
-    %li
-      %span.member_name
-        = m.name
-      %span.member_rating
-        = m.rating
-      = link_to "Голосовать", vote_member_path(m), remote: true, method: :post
+- if user_signed_in?
+  %ul
+    - members_rating_with_current_user_votes.each do |m|
+      %li
+        %span.member_name
+          = m.name
+        %span.member_rating
+          = m.rating
+        = link_to "Голосовать", vote_member_path(m), remote: true, method: :post, :"data-type" => :json

@@ -13,33 +13,40 @@ class MembersController < ApplicationController
       vk = VkontakteApi::Client.new session['vk_access_token']
       vk_result = vk.users.get uids: domain, fields: 'photo,domain,photo_medium'
       member = Member.new
-      member.vkontakte_uid = vk_result[0]['uid']
-      member.vkontakte_domain = vk_result[0]['domain']
-      member.photo = vk_result[0]['photo_medium']
-      member.first_name = vk_result[0]['first_name']
-      member.last_name = vk_result[0]['last_name']
+      fill_member_attributes_by_vk_result(member, vk_result)
       ActiveRecord::Base.transaction do
         member.save!
-        # adding a member means automatically voting for him
-        create_vote member
+        create_vote member # adding a member means automatically voting for him
       end
-
     rescue VkontakteApi::Error
       render status: 422, json: {errors: 'Не удалось найти пользователя Vk'}
     rescue Exception => e
-      render status: 422, json: {errors: 'Произошла ошибка'+ e.message}
+      render status: 422, json: {errors: 'Произошла ошибка'}
     else
       render json: vk_result
     end
   end
 
   def vote
-    member = Member.find params[:id]
-    create_vote member
+    begin
+      member = Member.find params[:id]
+      create_vote member
+    rescue
+      render status: 422, json: {errors: 'Произошла ошибка'}
+    else
+      render json: {}
+    end
   end
 
   private
 
+  def fill_member_attributes_by_vk_result member, vk_result
+    member.vkontakte_uid = vk_result[0]['uid']
+    member.vkontakte_domain = vk_result[0]['domain']
+    member.photo = vk_result[0]['photo_medium']
+    member.first_name = vk_result[0]['first_name']
+    member.last_name = vk_result[0]['last_name']
+  end
 
   def create_vote member
     Vote.create!(member: member, user: current_user)
