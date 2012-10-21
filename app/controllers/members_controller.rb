@@ -3,27 +3,19 @@ class MembersController < ApplicationController
   before_filter :authenticate_user!
 
   def create
-    domain = extract_domain_from_vk_url params[:vk_url]
+
+    @social_manager = Social::ManagerFactory.get_manager_by_social_network params[:social_network]
+    return render status: 422, json: {errors: 'Неизвестная соцсеть'} if !@social_manager
+
+    domain = @social_manager.extract_domain_from_url params[:social_url]
     unless domain
-      render status: 422, json: {errors: 'Неправильная ссылка'}
-      return
+      return render status: 422, json: {errors: 'Неправильная ссылка'}
     end
 
-    begin
-      vk = VkontakteApi::Client.new
-      vk_result = vk.users.get uids: domain, fields: 'photo,domain,photo_medium', lang: :ru
-      member = Member.new
-      fill_member_attributes_by_vk_result(member, vk_result)
-      ActiveRecord::Base.transaction do
-        member.save!
-        create_vote member # adding a member means automatically voting for him
-      end
-    rescue VkontakteApi::Error
-      render status: 422, json: {errors: 'Не удалось найти пользователя Vk'}
-    rescue Exception => e
-      render status: 422, json: {errors: 'Произошла ошибка'}
-    else
-      render json: vk_result
+    if params[:social_network] == "vkontakte"
+      create_member_by_vk_domain domain
+    elsif params[:social_network] == "facebook"
+      create_member_by_fb_domain domain
     end
   end
 
@@ -41,6 +33,51 @@ class MembersController < ApplicationController
 
   private
 
+  def create_member_by_vk_domain domain
+    begin
+      vk = VkontakteApi::Client.new
+      vk_result = vk.users.get uids: domain, fields: 'photo,domain,photo_medium', lang: :ru
+      member = Member.new
+      fill_member_attributes_by_vk_result(member, vk_result)
+      ActiveRecord::Base.transaction do
+        member.save!
+        create_vote member # adding a member means automatically voting for him
+      end
+    rescue VkontakteApi::Error
+      render status: 422, json: {errors: 'Не удалось найти пользователя Vk'}
+    rescue Exception => e
+      render status: 422, json: {errors: 'Произошла ошибка'}
+    else
+      render json: {}
+    end
+  end
+
+  def create_member_by_fb_domain domain
+    begin
+      user = FbGraph::User.fetch(domain)
+      member = Member.new
+      fill_member_attributes_by_fb_result(member, user)
+      ActiveRecord::Base.transaction do
+        member.save!
+        create_vote member # adding a member means automatically voting for him
+      end
+    rescue FbGraph::Unauthorized
+      render status: 422, json: {errors: 'Не удалось найти пользователя Facebook'}
+    rescue Exception => e
+      render status: 422, json: {errors: 'Произошла ошибка'}
+    else
+      render json: {}
+    end
+  end
+
+  def fill_member_attributes_by_fb_result member, fb_result
+    member.facebook_uid = fb_result.identifier
+    member.facebook_domain = fb_result.username
+    member.first_name = fb_result.first_name
+    member.last_name = fb_result.last_name
+    member.photo = fb_result.picture :square
+  end
+
   def fill_member_attributes_by_vk_result member, vk_result
     member.vkontakte_uid = vk_result[0]['uid']
     member.vkontakte_domain = vk_result[0]['domain']
@@ -53,9 +90,4 @@ class MembersController < ApplicationController
     Vote.create!(member: member, user: current_user)
   end
 
-  def extract_domain_from_vk_url url
-    s = url.scan(/^(http:\/\/)?(vk.com\/|vkontakte.ru\/)?([a-z0-9\._]+)$/)[0]
-    return s.last if s
-    nil
-  end
 end
