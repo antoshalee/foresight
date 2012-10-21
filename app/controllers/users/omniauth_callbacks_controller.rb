@@ -13,7 +13,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def login data
     provider = data["provider"]
     uid = data["uid"].to_s
-    auth = Auth.find_by_provider_and_uid(uid, provider)
+    auth = Auth.find_by_provider_and_uid(provider, uid)
 
     if auth
       sign_in_with_remember auth.user
