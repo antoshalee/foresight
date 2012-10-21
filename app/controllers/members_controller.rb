@@ -31,6 +31,19 @@ class MembersController < ApplicationController
     end
   end
 
+  def activate
+    begin
+      authorize! :update, @member
+      @member = Member.find params[:id]
+      @member.activated = true
+      @member.save!
+    rescue Exception => e
+      render status: 422, json: {errors: 'Произошла ошибка' + e.message }
+    else
+      render :show
+    end
+  end
+
   private
 
   def create_member_by_vk_domain domain

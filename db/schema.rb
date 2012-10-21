@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121020104253) do
+ActiveRecord::Schema.define(:version => 20121021120537) do
 
   create_table "auths", :force => true do |t|
     t.string   "provider"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(:version => 20121020104253) do
     t.string   "photo_big"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.boolean  "admin"
   end
 
   create_table "votes", :force => true do |t|

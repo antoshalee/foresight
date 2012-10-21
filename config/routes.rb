@@ -24,6 +24,7 @@ Foresight::Application.routes.draw do
   resources :members, :only => [:create] do
     member do
       post 'vote'
+      post 'activate'
     end
   end
 

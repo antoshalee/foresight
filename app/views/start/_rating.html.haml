@@ -11,3 +11,5 @@
           = "Вы уже проголосовали за этого человека"
         - else
           = link_to "Голосовать", vote_member_path(m), remote: true, method: :post, :"data-type" => :json, class: 'vote_link'
+        - if can? :update, m
+          = link_to "Активировать", activate_member_path(m), remote: true, method: :post, :"data-type" => :json, class: 'activate_link'
