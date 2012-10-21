@@ -18,6 +18,9 @@ Foresight::Application.routes.draw do
   # This route can be invoked with purchase_url(:id => product.id)
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
+
+  match 'rating' => 'start#rating'
+
   resources :members, :only => [:create] do
     member do
       post 'vote'

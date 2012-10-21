@@ -31,10 +31,11 @@ class MembersController < ApplicationController
     begin
       member = Member.find params[:id]
       create_vote member
+      member.reload
     rescue
       render status: 422, json: {errors: 'Произошла ошибка'}
     else
-      render json: {}
+      render json: {rating: member.rating}
     end
   end
 

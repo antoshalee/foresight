@@ -1,9 +1,10 @@
 - if user_signed_in?
   %ul
-    - members_rating_with_current_user_votes.each do |m|
+    - members_rating.each do |m|
       %li
+        = image_tag m.photo
         %span.member_name
           = m.name
         %span.member_rating
           = m.rating
-        = link_to "Голосовать", vote_member_path(m), remote: true, method: :post, :"data-type" => :json
+        = link_to "Голосовать", vote_member_path(m), remote: true, method: :post, :"data-type" => :json, class: 'vote_link'

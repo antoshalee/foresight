@@ -7,5 +7,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :rememberable, :trackable, :omniauthable
 
   attr_accessible :remember_me
-  # attr_accessible :title, :body
+
+  def name
+    "#{first_name} #{last_name}"
+  end
 end

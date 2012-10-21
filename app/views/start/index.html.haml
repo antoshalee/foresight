@@ -1,10 +1,13 @@
-%p Hello world
 - unless user_signed_in?
   = link_to 'Login with Facebook', user_omniauth_authorize_path(:facebook)
   = link_to 'Login with Vkontakte', user_omniauth_authorize_path(:vkontakte)
 - else
+  %div
+    = "Вы вошли как #{current_user.name}"
+    = link_to 'Выйти', destroy_user_session_path
   - member = Member.new
   = form_tag members_path, remote: true, :'data-type' => :json, class: 'add_member_form' do
     = text_field_tag :vk_url
     = submit_tag 'Добавить участника'
-= render 'rating'
+.rating
+  = render 'rating'

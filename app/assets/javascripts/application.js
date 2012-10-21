@@ -17,9 +17,15 @@
 $(document).ready(function(){
 	$(".add_member_form")
       .bind('ajax:success', function(evt, data, status, xhr) {
-      	alert('added');
+      	refreshRating();
       })
       .bind('ajax:error', function(xhr, status, error) {
       	console.log($.parseJSON(status.responseText).errors);
       })
 })
+
+refreshRating = function() {
+	$.get('/rating', function(data) {
+		$('.rating').html(data);
+	})
+}
