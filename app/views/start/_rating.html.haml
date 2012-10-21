@@ -1,11 +1,11 @@
 - if user_signed_in?
   %ul
     - members_rating.each do |m|
-      %li
+      %li<
         = image_tag m.photo, style: 'width: 50px; height: 50px'
-        %span.member_name
+        %span.member_name<
           = m.name
-        %span.member_rating
+        %span.member_rating<
           = m.rating
         - if current_user.members.include? m
           = "Вы уже проголосовали за этого человека"
@@ -13,4 +13,4 @@
           = link_to "Голосовать", vote_member_path(m), remote: true, method: :post, :"data-type" => :json, class: 'vote_link'
         - if can? :manage, m
           = link_to "Активировать", activate_member_path(m), remote: true, method: :post, :"data-type" => :json, class: 'activate_link'
-          = link_to "Удалить", member_path(m), remote: true, method: :delete, :"data-type" => :json, class: 'destroy_link'
+          = link_to "Удалить", member_path(m), remote: true, method: :delete, :"data-type" => :json, class: 'destroy_link', confirm: 'Вы уверены?'
