@@ -7,4 +7,7 @@
           = m.name
         %span.member_rating
           = m.rating
-        = link_to "Голосовать", vote_member_path(m), remote: true, method: :post, :"data-type" => :json, class: 'vote_link'
+        - if current_user.members.include? m
+          = "Вы уже проголосовали за этого человека"
+        - else
+          = link_to "Голосовать", vote_member_path(m), remote: true, method: :post, :"data-type" => :json, class: 'vote_link'

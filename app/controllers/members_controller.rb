@@ -24,8 +24,8 @@ class MembersController < ApplicationController
       member = Member.find params[:id]
       create_vote member
       member.reload
-    rescue
-      render status: 422, json: {errors: 'Произошла ошибка'}
+    rescue Exception => e
+      render status: 422, json: {errors: 'Произошла ошибка' + e.message }
     else
       render json: {rating: member.rating}
     end
