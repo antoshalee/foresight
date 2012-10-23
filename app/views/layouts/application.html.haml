@@ -3,9 +3,17 @@
   %head
     %title Foresight
     = stylesheet_link_tag    "application", :media => "all"
-    = javascript_include_tag "http://vkontakte.ru/js/api/share.js?9"
+    = javascript_include_tag "http://vkontakte.ru/js/api/openapi.js"
     = javascript_include_tag "application"
     = csrf_meta_tags
+    :javascript
+      $(document).ready(function(){
+        VK.init({
+          apiId: #{ENV['VK_APP_ID']},
+          onlyWidgets: true
+        });
+        initLikeButtons();
+      });
   %body
     #vk_share_button
     = yield

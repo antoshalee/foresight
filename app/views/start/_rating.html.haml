@@ -7,7 +7,7 @@
           = m.name
         %span.member_rating<
           = m.rating
-        %span.member_share_button{:"data-id"=>m.id, :"data-image"=>m.photo, :"data-description"=>m.name}
+        %span.vk_like{id: "vk_like_#{m.id}", :"data-id" => m.id, :"data-image" => m.photo}
         - if current_user.members.include? m
           = "Вы уже проголосовали за этого человека"
         - else
