@@ -2,6 +2,11 @@
 class MembersController < ApplicationController
   before_filter :authenticate_user!
 
+  def show
+    @member = Member.find params[:id]
+    render 'start/index'
+  end
+
   def create
     return render_error 'Не заполнено поле Рекомендация' if params[:message].blank?
 

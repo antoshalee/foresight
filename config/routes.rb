@@ -21,7 +21,7 @@ Foresight::Application.routes.draw do
 
   match 'rating' => 'start#rating'
 
-  resources :members, :only => [:create, :destroy] do
+  resources :members, :only => [:create, :destroy, :show] do
     member do
       post 'vote'
       post 'activate'

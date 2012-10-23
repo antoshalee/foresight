@@ -1,3 +1,7 @@
+- if @member
+  - content_for :meta do
+    = render 'layouts/fb_metatags', member: @member
+
 - unless user_signed_in?
   = link_to 'Login with Facebook', user_omniauth_authorize_path(:facebook)
   = link_to 'Login with Vkontakte', user_omniauth_authorize_path(:vkontakte)
@@ -21,4 +25,4 @@
     %br
     = submit_tag 'Добавить участника'
 .rating
-  = render 'rating'
+  = render 'start/rating'
