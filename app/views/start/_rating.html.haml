@@ -8,6 +8,8 @@
         %span.member_rating<
           = m.rating
         %span.vk_like{id: "vk_like_#{m.id}", :"data-id" => m.id, :"data-image" => m.photo}
+        %span.fb_like
+          /%fb:like{href: "http://example.com", width: 450, send: "false", layout: "button_count", show_faces: "false"}
         - if current_user.members.include? m
           = "Вы уже проголосовали за этого человека"
         - else
