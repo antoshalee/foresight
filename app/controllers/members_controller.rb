@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class MembersController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, except: [:show]
 
   def show
     @member = Member.find params[:id]
@@ -99,7 +99,13 @@ class MembersController < ApplicationController
     member.facebook_domain = fb_result.username
     member.first_name = fb_result.first_name
     member.last_name = fb_result.last_name
-    member.photo = fb_result.picture :square
+
+    array = FbGraph::Query.new(
+      "SELECT pic FROM user WHERE uid = #{fb_result.identifier}"
+    ).fetch
+    member.photo = array[0]["pic"] if array[0]
+
+    #member.photo = fb_result.picture :square
   end
 
   def fill_member_attributes_by_vk_result member, vk_result

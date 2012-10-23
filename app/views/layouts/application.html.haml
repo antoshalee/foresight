@@ -8,6 +8,7 @@
     = csrf_meta_tags
     = yield :meta
     :javascript
+      var site_host = '#{request.host}'
       $(document).ready(function(){
         VK.init({
           apiId: #{ENV['VK_APP_ID']},

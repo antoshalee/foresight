@@ -11,10 +11,10 @@ initLikeButtons = function() {
 			{
 				type: 'button',
 				pageImage: memberPhoto,
+				pageUrl: site_host + '/members/' + memberId,
 				pageTitle: 'Красноярский Foresight',
 				pageDescription: 'Участвуй в выборе'
-			},
-			memberId
+			}
 		);
 	})
 
