@@ -11,7 +11,8 @@ initLikeButtons = function() {
 			{
 				type: 'button',
 				pageImage: memberPhoto,
-				pageUrl: 'http://kmfuture.herokuapp.com/'
+				pageTitle: 'Красноярский Foresight',
+				pageDescription: 'Участвуй в выборе'
 			},
 			memberId
 		);
