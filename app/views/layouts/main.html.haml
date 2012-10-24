@@ -118,7 +118,7 @@
                           div class="expert__photo_wrap">
                           <img src="content/expert-1.jpg" width="204" height="153" alt="" class="expert__photo">
                           </div
-                        .expert__name= "huilo"+e[:name]
+                        .expert__name= e[:name]
                         .expert__role= e[:role]
                       %footer.expert__footer
                         = link_to e[:web], e[:web], class: "expert__web" if e[:web]
