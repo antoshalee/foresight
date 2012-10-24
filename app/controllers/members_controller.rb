@@ -39,6 +39,23 @@ class MembersController < ApplicationController
     end
   end
 
+  def merge
+    member = Member.find params[:id]
+    merge_member = Member.find params[:merge_id]
+    return render_error 'К первому участнику уже привязаны две соц.сети' if member.has_both_social?
+    return render_error 'Ко второму участнику уже привязаны две соц.сети' if merge_member.has_both_social?
+    return render_error 'Участники привязаны к одной и той же сети' if members_have_same_socials? member, merge_member
+
+    begin
+      authorize! :update, member
+      member.merge merge_member
+    rescue Exception => e
+      render status: 422, json: {errors: 'Произошла ошибка' + e.message }
+    else
+      render json: {}
+    end
+  end
+
   def vote
     begin
       member = Member.find params[:id]
@@ -77,6 +94,11 @@ class MembersController < ApplicationController
   end
 
   private
+
+  def members_have_same_socials? member1, member2
+    (member1.has_vkontakte? && member2.has_vkontakte?) ||
+    (member1.has_facebook? && member2.has_facebook?)
+  end
 
   def build_member_by_vk_domain domain
     vk = VkontakteApi::Client.new

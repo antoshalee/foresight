@@ -17,3 +17,4 @@
         - if can? :manage, m
           = link_to "Активировать", activate_member_path(m), remote: true, method: :post, :"data-type" => :json, class: 'activate_link'
           = link_to "Удалить", member_path(m), remote: true, method: :delete, :"data-type" => :json, class: 'destroy_link', confirm: 'Вы уверены?'
+          = link_to "Добавить ссылку на другую сеть"
