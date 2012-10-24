@@ -1,0 +1,19 @@
+@font-face {
+    font-family: 'goodcyr-book';
+    src: url('/assets/goodcyr-book-webfont.eot');
+    src: url('/assets/goodcyr-book-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/assets/goodcyr-book-webfont.woff') format('woff'),
+         url('/assets/goodcyr-book-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'goodcyr-light';
+    src: url('/assets/goodcyr-light-webfont.eot');
+    src: url('/assets/goodcyr-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/assets/goodcyr-light-webfont.woff') format('woff'),
+         url('/assets/goodcyr-light-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
