@@ -23,8 +23,14 @@ class Member < ActiveRecord::Base
     member.votes.each do |v|
       v.member = self if !self.users.include v.user
     end
+  end
 
+  def vkontakte_url
+    "http://vk.com/#{vkontakte_domain}"
+  end
 
+  def facebook_url
+    "http://facebook.com/#{facebook_domain}"
   end
 
   def has_vkontakte?

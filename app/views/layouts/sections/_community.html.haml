@@ -1,0 +1,39 @@
+%section.section.community
+  .section__wrapper
+    .section__wrap
+      %h2.section__header Foresight-сообщество
+      .section__text
+        .section__subheader Красноярское foresight-сообщество — это мы!
+        .columns
+          .columns__item.s Те, кому небезразлично будущее родного города — Красноярска.
+          .columns__item.s Те, у кого есть гражданская позиция, кто чувствует ответственность за свою среду обитания.
+          .columns__item.s Те, кто не только живет сегодняшним днем, потребляя блага и ресурсы города, а думает о будущем.
+        .community__join
+          %span#participate_btn.button.contour.js_popup{"data-rel" => "participate"} Вступить в сообщество
+          %span.button.contour.js_popup{"data-rel" => "recommend"} Порекомендовать в сообщество
+      .community__top
+        .community__top_header ТОП-10
+        .community__top_body
+          %ol.members
+            - members_rating.each do |m|
+              %li.members__item>
+                .member
+                  %img.member__photo{:alt => "", :height => "90", :src => m.photo, :width => "90"}
+                  .member__name= m.name
+                  =#.member__desc Управленец, предприниматель
+                  .member__share
+                    Place for share buttons
+                  %footer.member__footer
+                    %ul.member__social
+                      - if m.has_vkontakte?
+                        %li.member__social_item
+                          %a.vk{:href => m.vkontakte_url, target: 'blank'} Вконтакте
+                      - if m.has_facebook?
+                        %li.member__social_item
+                          %a.fb{:href => m.facebook_url, target: 'blank'} Фейсбук
+                    - if !user_signed_in? || !(current_user.members.include? m)
+                      = link_to "Поддержать", vote_member_path(m), remote: true, method: :post, :"data-type" => :json, class: 'button vote'
+        .community__allmembers
+          %span.button.violet Показать весь список
+    .section__helper
+  .community__triangle
