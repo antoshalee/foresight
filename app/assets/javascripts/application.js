@@ -19,7 +19,11 @@ var showAll = false;
 $(document).ready(function(){
 
   if (returnTo) {
-    popup__show(returnTo);
+    if (returnTo=='participate' || returnTo=='recommend')
+    {
+      popup__show(returnTo);
+    }
+
     $('body').scrollTo( $('.community'), 1000 );
   }
 
@@ -53,6 +57,7 @@ $(document).ready(function(){
       // handlers for get all rating
       $("#allmembers_link").bind('ajax:success', function(evt, data, status, xhr) {
           $('.members').html(data);
+          $('#allmembers_link').hide();
           showAll = true;
       });
 
