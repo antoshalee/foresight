@@ -10,6 +10,9 @@
       = javascript_include_tag :application
       = csrf_meta_tags
       = render 'layouts/ya_metrika'
+      - unless flash["return_to"].nil?
+        %script(type="text/javascript")
+          var returnTo = '#{flash["return_to"]}';
   %body
     %header#header{:role => "banner"}
       .header__wrap

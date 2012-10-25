@@ -1,7 +1,9 @@
-- members_rating.each do |m|
+- members_rating(all).each do |m|
   %li.members__item>
     .member
-      %img.member__photo{:alt => "", :height => "90", :src => m.photo, :width => "90"}
+      .member__photo_wrap
+        %img.member__photo{:alt => "", :height => "90", :src => m.photo, :width => "90"}
+        %span.member__count= m.rating
       .member__name
         = m.first_name
         %br

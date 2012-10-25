@@ -1,8 +1,15 @@
 # -*- encoding : utf-8 -*-
 class MembersController < ApplicationController
-  before_filter :authenticate_user!, except: [:show]
+  before_filter :authenticate_user!, except: [:show, :index]
 
   def index
+    unless params[:all].nil?
+      all = params[:all] == "false" ? false : true
+    else
+      all = true
+    end
+    #raise all.class.to_s
+    render partial: 'layouts/sections/members', locals: {all: all}
   end
 
   def show

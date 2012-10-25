@@ -1,10 +1,22 @@
 .popup#participate
-  %h2.popup__header Регистрация участника
-  .popup__body
-    = form_tag participate_path, remote: true, method: :post, :'data-type' => :json do
-      .field
-        %label.label{:for => "register-desc"} Расскажите немного о себе
-        .input__wrap
-          %textarea#register-desc.textarea{:name => "message"}
-      .submit
-        %button.button{:type => "submit"} Вступить
+  - if user_signed_in?
+    %h2.popup__header Регистрация участника
+    .popup__body
+      = form_tag participate_path, remote: true, method: :post, :'data-type' => :json do
+        .field
+          %label.label{:for => "register-desc"} Расскажите немного о себе
+          .input__wrap
+            %textarea#register-desc.textarea{:name => "message"}
+        .submit
+          %button.button{:type => "submit"} Вступить
+  - else
+    %h2.popup__header Вход через социальную сеть
+    .popup__body
+      %form{:action => "/", :method => "post"}
+        .field
+          %span.label.centered Войдите, чтобы иметь возможность проголосовать, стать участником или порекомендовать друга.
+          %ul.socialbuttons
+            %li.socialbuttons__item
+              %a.vk{:href => user_omniauth_authorize_path(:vkontakte, :return_to => 'participate')}
+            %li.socialbuttons__item
+              %a.fb{:href => user_omniauth_authorize_path(:facebook, :return_to => 'participate')}
