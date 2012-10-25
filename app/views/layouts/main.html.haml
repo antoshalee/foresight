@@ -10,18 +10,13 @@
       %script{:src => "/assets/slideit.js"}
       %script{:src => "/assets/scrollto.js"}
       %script{:src => "/assets/main.js"}
-      / Yandex.Metrika counter
-      :javascript
-        (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter17874289 = new Ya.Metrika({id:17874289, enableAll: true, webvisor:true}); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f); } else { f(); } })(document, window, "yandex_metrika_callbacks");        %noscript
-        %div
-          %img{:alt => "", :src => "//mc.yandex.ru/watch/17874289", :style => "position:absolute; left:-9999px;"}/
-      / /Yandex.Metrika counter
+      = render 'layouts/ya_metrika'
   %body
     %header#header{:role => "banner"}
       .header__wrap
         #logo
           %span.sitenav__link{"data-href" => "main"}
-            %img.logo__image{:alt => "Foresight", :height => "40", :src => "/assets/logo.gif", :width => "165"}/
+            %img.logo__image{:alt => "Foresight", :height => "50", :src => "/assets/logo.gif", :width => "165"}/
         %nav.sitenav
           %ul.sitenav__list
             %li.sitenav__item
@@ -30,107 +25,27 @@
               %span.sitenav__link{"data-href" => "idea"} Идея проекта
             %li.sitenav__item
               %span.sitenav__link{"data-href" => "experts"} Экспертный совет
+            %li.sitenav__item
+              %span.sitenav__link{"data-href" => "orgs"} Организаторы
+            %li.sitenav__item
+              %span.sitenav__link{"data-href" => "partners"} Партнеры
             / li class="sitenav__item"><span class="sitenav__link" data-href="partners">Партнеры</span></li
             / li class="sitenav__item"><span class="sitenav__link" data-href="experts">Foresight-сообщество</span></li
         .social
           %ul.social__list
             %li.social__item
-              %a.social__link.tw{:href => "#"} Твитер
+              %a.social__link.tw{:href => "https://twitter.com/braincamp1"} Твитер
             %li.social__item
-              %a.social__link.vk{:href => "#"} Вконтакте
-            %li.social__item
+              %a.social__link.vk{:href => "http://vk.com/braincamp"} Вконтакте
+            -# %li.social__item
               %a.social__link.fb{:href => "#"} Фейсбук
         / div class="signup"><span class="signup__button button">Зарегистрироваться</span></div
-    %section.section.main
-      .section__wrap
-        %div
-          %img{:alt => "Foresight", :height => "363", :src => "/assets/biglogo.png", :width => "1289"}/
-        .slogan Проектируй свое будущее!
-      .section__helper
-    %section.section.about
-      .section__wrap
-        %table.about__main_wrap{:cellpadding => "0", :cellspacing => "0"}
-          %tr
-            %td.about__main_before
-              .about__main_before_wrap  
-            %td.about__main
-              %h2.section__header Что такое Foresight?
-              .section__text.usercontent
-                %p
-                  250 активных жителей нашего города разных возрастов и профессий при поддержке ведущих федеральных экспертов примут участие в 
-                  %nobr 3-дневной
-                  %strong форсайт-сессии.
-                  Это специальный формат коллективной умственной работы, продукт которого — сценарии развития, образы будущего и дорожная карта по достижению желаемого состояния рассматриваемого объекта. В данном случае — города Красноярска.
-                %p
-                  %strong Технология «Форсайт»,
-                  от английского foresight — взгляд в будущее, применяется в современном мире в целях мобилизации интеллектуальных ресурсов активных граждан для качественного прорыва в какой-либо проблемной области.
-                %p Мы считаем, что необходимо использовать эту технологию для объединения здоровых сил общества и достижения позитивных изменений в жизни своего города.
-                %p Важно: катастрофический, а, тем более, апокалиптический сценарий развития мы во внимание не берем, так как на его основе невозможно действовать.
-              %a.button
-                %span.button__wrap Скачать полное описание
-                %span.button__subtext PDF (1,2 МБ)
-            %td.about__main_after
-              .about__main_after_wrap  
-      .section__helper
-    %section.section.idea
-      .section__wrap
-        %h2.section__header Что ждет наш город завтра, через год, через 5 лет, через 20?
-        .section__text
-          .column.usercontent
-            %h3 Цели
-            %ul
-              %li Анализ существующих трендов и ресурсов;
-              %li Обсуждение видения будущего города Красноярска до 2030 года;
-              %li Оформление 3-5 альтернативных сценариев развития города;
-              %li Построение дорожной карты.
-          .column.usercontent
-            %h3 Дата и время проведения
-            %ol.usercontent__dates
-              %li
-                %dl
-                  %dt Формат
-                  %dd 3-дневная форсайт-сессия
-                  %dt Дата
-                  %dd 17-19 ноября 2012
-                  %dt Место
-                  %dd Библиотека СФУ (пр. Свободный, 79/10)
-              %li
-                %dl
-                  %dt Формат
-                  %dd 4 тематические экспертные сессии (по 2-3 часа)
-                  %dt Дата
-                  %dd 4, 9, 12, 15 ноября 2012 (уточняется)
-                  %dt Место
-                  %dd уточняется
-      .section__helper
-    %section.section.experts
-      .section__wrapper
-        .section__wrap
-          %h2.section__header Экспертный совет
-          .sliderexperts
-            .sliderexperts__wrap
-              %ul.sliderexperts__list
-                - experts.each do |e|
-                  %li.sliderexperts__item
-                    .expert
-                      .expert__main
-                        /
-                          div class="expert__photo_wrap">
-                          <img src="content/expert-1.jpg" width="204" height="153" alt="" class="expert__photo">
-                          </div
-                        .expert__name= e[:name]
-                        .expert__role= e[:role]
-                      %footer.expert__footer
-                        = link_to e[:web], e[:web], class: "expert__web" if e[:web]
-                        %ul.expert__social
-                          %li.expert__social_item
-                            %a.expert__social_link.vk{:href => e[:vk_url]} Вконаткте
-                          %li.expert__social_item
-                            %a.expert__social_link.fb{:href => e[:fb_url]} Фейсбук
-            .sliderexperts__control
-              .sliderexperts__prev
-              .sliderexperts__next
-        .section__helper
+    = render 'layouts/sections/main'
+    = render 'layouts/sections/about'
+    = render 'layouts/sections/idea'
+    = render 'layouts/sections/experts', experts: experts
+    = render 'layouts/sections/orgs'
+    = render 'layouts/sections/partners'
     %footer#footer{:role => "contentinfo"}
       .footer__wrap
         .development
@@ -142,4 +57,4 @@
             %a{:href => "http://vk.com/braincamp"} инициативной группой
             на базе Управления по молодежной политике администрации города Красноярска в рамках
             %a{:href => "http://www.kmforum.ru/"} Молодежной недели КМФ
-          %p Контакт-центр: +7 (391) 45-45-45
+          %p Контакт-центр: +7 (391) 245-45-45
