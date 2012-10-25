@@ -2,6 +2,9 @@
 class MembersController < ApplicationController
   before_filter :authenticate_user!, except: [:show]
 
+  def index
+  end
+
   def show
     @member = Member.find params[:id]
     render 'start/index'

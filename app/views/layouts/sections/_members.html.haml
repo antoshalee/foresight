@@ -1,0 +1,21 @@
+- members_rating.each do |m|
+  %li.members__item>
+    .member
+      %img.member__photo{:alt => "", :height => "90", :src => m.photo, :width => "90"}
+      .member__name
+        = m.first_name
+        %br
+        = m.last_name
+      =#.member__desc Управленец, предприниматель
+      .member__share
+        Place for share buttons
+      %footer.member__footer
+        %ul.member__social
+          - if m.has_vkontakte?
+            %li.member__social_item
+              %a.vk{:href => m.vkontakte_url, target: 'blank'} Вконтакте
+          - if m.has_facebook?
+            %li.member__social_item
+              %a.fb{:href => m.facebook_url, target: 'blank'} Фейсбук
+        - if !user_signed_in? || !(current_user.members.include? m)
+          = link_to "Поддержать", vote_member_path(m), remote: true, method: :post, :"data-type" => :json, class: 'button vote'
