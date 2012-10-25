@@ -46,7 +46,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     else
       flash["return_to"] = 'community'
     end
-    redirect_to secret_path
+    redirect_to :root
   end
 
   def sign_in_with_remember user

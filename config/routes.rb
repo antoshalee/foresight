@@ -64,7 +64,7 @@ Foresight::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
 
-  get "secret"=> 'start#secret'
+  #get "secret"=> 'start#secret'
   get "layout"=> 'start#layout'
   post "participate" => 'members#participate'
 
