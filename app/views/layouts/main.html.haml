@@ -23,7 +23,7 @@
               %span.sitenav__link{"data-href" => "about"} Что такое Foresight?
             %li.sitenav__item
               %span.sitenav__link{"data-href" => "idea"} Идея проекта
-            %li.sitenav__item
+            -# %li.sitenav__item
               %span.sitenav__link{"data-href" => "experts"} Экспертный совет
             %li.sitenav__item
               %span.sitenav__link{"data-href" => "orgs"} Организаторы
@@ -43,7 +43,7 @@
     = render 'layouts/sections/main'
     = render 'layouts/sections/about'
     = render 'layouts/sections/idea'
-    = render 'layouts/sections/experts', experts: experts
+    = #render 'layouts/sections/experts', experts: experts
     = render 'layouts/sections/orgs'
     = render 'layouts/sections/partners'
     %footer#footer{:role => "contentinfo"}
