@@ -43,7 +43,7 @@ $(document).ready(function(){
       // handlers for participate form
       $("#participate form").bind('ajax:success', function(evt, data, status, xhr) {
             $('#participate_btn').hide();
-            popup__show('message')
+            showMessage('Поздравляем!', 'Вы успешно зарегистрировались как участник');
       });
 
       // handlers for recommend form
@@ -65,7 +65,7 @@ $(document).ready(function(){
 
 showMessage = function(header, message) {
   $('#message h2').html(header);
-  $('#message .popup__body').html(message);
+  $('#message .label').html(message);
   popup__show('message');
 }
 
