@@ -77,6 +77,13 @@ a:active {
 	opacity:1;
 	background:#3da3da;
 	}
+.button.vote {
+	font:11px/
+	}
+.button.vote:after {
+	content:'';
+	display:none;
+	}
 	.button__wrap {
 		display:block;
 		}
@@ -84,6 +91,10 @@ a:active {
 		display:block;
 		font:11px Arial, Helvetica, sans-serif;
 		color:#063e5f;
+		}
+	.button a {
+		color:#fff;
+		text-decoration:underline;
 		}
 
 .field {
@@ -424,11 +435,21 @@ a:active {
 						top:8px;
 						background:#62125a;
 						}
-				.join {
+				.community__join {
 					padding:40px 0 37px;
 					text-align:center;
 					border-bottom:2px solid #0866a8;
 					}
+			.community__top {
+
+				}
+				.community__top_header {
+
+					}
+				.community__top_body {
+
+					}
+
 
 	.community__triangle {
 		position:absolute;
@@ -892,3 +913,67 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cce25e97', e
 		.socialbuttons__item a.fb {
 			background:url('/assets/fb.png') center center no-repeat;
 			}
+
+.members {
+
+	}
+	.members__item {
+		display: inline-block;
+		vertical-align:top;
+		text-align:left;
+		width:120px;
+		margin:0 8px;
+		}
+
+.member {
+
+	}
+	.member__photo {
+		border-radius:5px;
+		background:#336;
+		margin:0 0 10px;
+		}
+	.member__name {
+		font:14px/19px Arial, Helvetica, sans-serif;
+		color:#fff;
+		margin:0 0 4px;
+		}
+	.member__desc {
+		font:12px/15px Arial, Helvetica, sans-serif;
+		color:#93d7f6;
+		margin:0 0 10px;
+		}
+	.member__share {
+		display:none;
+		}
+	.member__footer {
+
+		}
+		.member__social {
+
+			}
+			.member__social_item {
+				display: inline-block;
+				width:16px;
+				height:16px;
+				text-indent:-9999px;
+				overflow:hidden;
+				background:yellow;
+				}
+				.member__social_item a {
+					display:block;
+					width:16px;
+					height:16px;
+					}
+				.member__social_item a.vk {
+					
+					}
+				.member__social_item a.fb {
+					
+					}
+				.member__social_item a:hover {
+					opacity:0.9;
+					}
+				.member__social_item a:active {
+					
+					}
