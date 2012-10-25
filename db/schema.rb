@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121025093251) do
+ActiveRecord::Schema.define(:version => 20121025101527) do
 
   create_table "auths", :force => true do |t|
     t.string   "provider"
@@ -63,7 +63,10 @@ ActiveRecord::Schema.define(:version => 20121025093251) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.boolean  "admin"
+    t.integer  "member_id"
   end
+
+  add_index "users", ["member_id"], :name => "index_users_on_member_id"
 
   create_table "votes", :force => true do |t|
     t.integer  "user_id"

@@ -6,7 +6,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def vkontakte
-    login request.env["omniauth.auth"]
+    data = request.env["omniauth.auth"]
+    domain = data["extra"]["raw_info"]["domain"]
+    login data, domain
   end
 
   private

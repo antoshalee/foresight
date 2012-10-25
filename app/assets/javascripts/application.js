@@ -15,6 +15,8 @@
 //= require_tree .
 
 $(document).ready(function(){
+
+      // global form handlers
 	$("body")
       .on('ajax:success', "form, .destroy_link", function(evt, data, status, xhr) {
       	refreshRating();
@@ -22,6 +24,14 @@ $(document).ready(function(){
       .on('ajax:error', "form, .destroy_link", function(xhr, status, error) {
       	console.log($.parseJSON(status.responseText).errors);
       })
+
+      // handlers for participate form
+      $("#participate form").bind('ajax:success', function(evt, data, status, xhr) {
+            $('#overlay, #participate').hide();
+      });
+
+
+
 })
 
 refreshRating = function() {
