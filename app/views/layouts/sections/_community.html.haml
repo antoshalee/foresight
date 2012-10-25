@@ -12,7 +12,8 @@
           .columns__item.s Те, у кого есть гражданская позиция, кто чувствует ответственность за свою среду обитания.
           .columns__item.s Те, кто не только живет сегодняшним днем, потребляя блага и ресурсы города, а думает о будущем.
         .community__join
-          %span#participate_btn.button.contour.js_popup{"data-rel" => "participate"} Вступить в сообщество
+          - unless (user_signed_in? && current_user.member.present?)
+            %span#participate_btn.button.contour.js_popup{"data-rel" => "participate"} Вступить в сообщество
           %span.button.contour.js_popup{"data-rel" => "recommend"} Порекомендовать в сообщество
       .community__top
         .community__top_header ТОП-10

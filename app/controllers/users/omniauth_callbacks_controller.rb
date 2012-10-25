@@ -30,7 +30,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         sign_in_with_remember user
       end
     end
-    flash["return_to"] = request.env["omniauth.params"]['return_to']
+    if current_user.member.blank?
+      flash["return_to"] = request.env["omniauth.params"]['return_to']
+    else
+      flash["return_to"] = 'community'
+    end
     redirect_to secret_path
   end
 

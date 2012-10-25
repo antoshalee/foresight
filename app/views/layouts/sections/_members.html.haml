@@ -10,7 +10,9 @@
         = m.last_name
       =#.member__desc Управленец, предприниматель
       .member__share
-        Place for share buttons
+        =#Place for share buttons
+        - if can? :manage, m
+          = link_to "Удалить", member_path(m), remote: true, method: :delete, :"data-type" => :json, class: 'destroy_link', confirm: 'Вы уверены?'
       %footer.member__footer
         %ul.member__social
           - if m.has_vkontakte?

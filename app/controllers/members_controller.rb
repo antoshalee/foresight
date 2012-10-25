@@ -33,6 +33,8 @@ class MembersController < ApplicationController
     begin
       unless member
         create_member provider, domain, params[:message]
+        current_user.member = @member
+        current_user.save
       end
     rescue Exception => e
       render status: 422, json: {errors: 'Произошла ошибка'+e.message}
