@@ -18,8 +18,8 @@ var showAll = false;
 
 $(document).ready(function(){
 
-  if (returnTo=='participate') {
-    popup__show('participate');
+  if (returnTo) {
+    popup__show(returnTo);
     $('body').scrollTo( $('.community'), 1000 );
   }
 

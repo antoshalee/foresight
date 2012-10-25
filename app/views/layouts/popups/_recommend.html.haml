@@ -1,14 +1,17 @@
 .popup#recommend
-  %h2.popup__header Рекомендовать участника
-  .popup__body
-    = form_tag members_path, remote: true, :method=> :post, :'data-type' => :json do
-      .field
-        %label.label{:for => "register-url"} Ссылка на страницу в социальной сети
-        .input__wrap
-          %input#recommend-url.input{:name => "url", :type => "text"}
-      .field
-        %label.label{:for => "register-desc"} Расскажите немного об этом человеке
-        .input__wrap
-          %textarea#recommend-desc.textarea{:name => "message"}
-      .submit
-        %button.button{:type => "submit"} Рекомендовать
+  - if user_signed_in?
+    %h2.popup__header Рекомендовать участника
+    .popup__body
+      = form_tag members_path, remote: true, :method=> :post, :'data-type' => :json do
+        .field
+          %label.label{:for => "register-url"} Ссылка на страницу в социальной сети
+          .input__wrap
+            %input#recommend-url.input{:name => "url", :type => "text"}
+        .field
+          %label.label{:for => "register-desc"} Расскажите немного об этом человеке
+          .input__wrap
+            %textarea#recommend-desc.textarea{:name => "message"}
+        .submit
+          %button.button{:type => "submit"} Рекомендовать
+  - else
+    = render 'layouts/popups/register_body', return_to: 'recommend'
