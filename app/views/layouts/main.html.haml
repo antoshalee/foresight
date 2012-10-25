@@ -13,6 +13,9 @@
       - unless flash["return_to"].nil?
         %script(type="text/javascript")
           var returnTo = '#{flash["return_to"]}';
+      - else
+        %script(type="text/javascript")
+          var returnTo = null;
   %body
     %header#header{:role => "banner"}
       .header__wrap
