@@ -415,12 +415,14 @@ a:active {
 						font:17px/23px "goodcyr-light", Arial, Helvetica, sans-serif;
 						}
 					.section.community .columns__item:before {
-						content:'⦁';
-						width:15px;
+						content:'';
+						width:6px;
+						height:6px;
+						border-radius:3px;
 						position: absolute;
 						left:-15px;
-						top:2px;
-						color:#62125a;
+						top:8px;
+						background:#62125a;
 						}
 				.join {
 					padding:40px 0 37px;
