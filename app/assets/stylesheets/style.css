@@ -78,7 +78,21 @@ a:active {
 	background:#3da3da;
 	}
 .button.vote {
-	font:11px/
+	padding:0 10px;
+	font:11px/22px Arial, Helvetica, sans-serif;
+	color:#bdcf26;
+	background:#0f5993;
+	box-shadow:-1px -1px 0 0 #3c8ec5, 1px 1px 0 0 #13476a;
+	border:0;
+	}
+.button.vote:hover {
+	opacity:0.8;
+	}
+.button.vote:active {
+	position: relative;
+	right:-1px;
+	bottom:-1px;
+	box-shadow:1px 1px 0 0 #3c8ec5;
 	}
 .button.vote:after {
 	content:'';
@@ -370,9 +384,14 @@ a:active {
 		}
 
 .section.community {
+	height:auto;
+	padding:0;
 	background:url('/assets/community-bg.gif') top center;
 	box-shadow:inset 0 0 40px 0 rgba(0,0,0,0.5);
 	}
+	.section.community .section__wrapper {
+		padding:70px 0 90px;
+		}
 	.section.community .section__wrapper:before {
 		position: absolute;
 		top:-50%;
@@ -444,13 +463,21 @@ a:active {
 
 				}
 				.community__top_header {
-
+					margin:30px 0;
+					font:35px "goodcyr-book", Arial, Helvetica, sans-serif;
+					color:#fff;
+					text-shadow:1px 2px 0 #0464b3;
 					}
 				.community__top_body {
-
+					width:1400px;
+					margin:auto;
+					padding:10px 10px 0;
+					border:1px solid #06507e;
+					border-right:1px solid #46a1d6;
+					border-bottom:1px solid #46a1d6;
+					background:rgba(0,0,0,0.1);
+					border-radius:8px;
 					}
-
-
 	.community__triangle {
 		position:absolute;
 		bottom:-45px;
@@ -842,15 +869,14 @@ a:active {
 	right:0;
 	bottom:0;
 	left:0;
-background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPHJhZGlhbEdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNzUlIj4KICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNlMjVlOTciIHN0b3Atb3BhY2l0eT0iMC44Ii8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMjVlOTciIHN0b3Atb3BhY2l0eT0iMCIvPgogIDwvcmFkaWFsR3JhZGllbnQ+CiAgPHJlY3QgeD0iLTUwIiB5PSItNTAiIHdpZHRoPSIxMDEiIGhlaWdodD0iMTAxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
-background: -moz-radial-gradient(center, ellipse cover,  rgba(226,94,151,0.8) 0%, rgba(226,94,151,0) 100%);
-background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(226,94,151,0.8)), color-stop(100%,rgba(226,94,151,0)));
-background: -webkit-radial-gradient(center, ellipse cover,  rgba(226,94,151,0.8) 0%,rgba(226,94,151,0) 100%);
-background: -o-radial-gradient(center, ellipse cover,  rgba(226,94,151,0.8) 0%,rgba(226,94,151,0) 100%);
-background: -ms-radial-gradient(center, ellipse cover,  rgba(226,94,151,0.8) 0%,rgba(226,94,151,0) 100%);
-background: radial-gradient(ellipse at center,  rgba(226,94,151,0.8) 0%,rgba(226,94,151,0) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cce25e97', endColorstr='#00e25e97',GradientType=1 );
-
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPHJhZGlhbEdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNzUlIj4KICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNlMjVlOTciIHN0b3Atb3BhY2l0eT0iMC44Ii8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMjVlOTciIHN0b3Atb3BhY2l0eT0iMCIvPgogIDwvcmFkaWFsR3JhZGllbnQ+CiAgPHJlY3QgeD0iLTUwIiB5PSItNTAiIHdpZHRoPSIxMDEiIGhlaWdodD0iMTAxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+	background: -moz-radial-gradient(center, ellipse cover,  rgba(226,94,151,0.8) 0%, rgba(226,94,151,0) 100%);
+	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(226,94,151,0.8)), color-stop(100%,rgba(226,94,151,0)));
+	background: -webkit-radial-gradient(center, ellipse cover,  rgba(226,94,151,0.8) 0%,rgba(226,94,151,0) 100%);
+	background: -o-radial-gradient(center, ellipse cover,  rgba(226,94,151,0.8) 0%,rgba(226,94,151,0) 100%);
+	background: -ms-radial-gradient(center, ellipse cover,  rgba(226,94,151,0.8) 0%,rgba(226,94,151,0) 100%);
+	background: radial-gradient(ellipse at center,  rgba(226,94,151,0.8) 0%,rgba(226,94,151,0) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cce25e97', endColorstr='#00e25e97',GradientType=1 );
 	}
 .popup {
 	position:fixed;
@@ -921,16 +947,29 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cce25e97', e
 		display: inline-block;
 		vertical-align:top;
 		text-align:left;
-		width:120px;
-		margin:0 8px;
+		width:100px;
+		padding:10px 20px;
+		border-radius:5px;
+		height:240px;
+		margin:0 0 20px;
 		}
+	.members__item:hover {
+		background:#fff;
+		box-shadow:0 1px 5px 0 rgba(0,0,0,0.2);
+		}
+		.members__item:hover .member__name {
+			color:#441356;
+			}
+		.members__item:hover .member__desc {
+			color:#9f3f79;
+			}
 
 .member {
 
 	}
 	.member__photo {
 		border-radius:5px;
-		background:#336;
+		background:#457;
 		margin:0 0 10px;
 		}
 	.member__name {
@@ -946,11 +985,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cce25e97', e
 	.member__share {
 		display:none;
 		}
+	.members__item:hover .member__share {
+		display:none;
+		}
 	.member__footer {
-
+		display:block;
+		}
+	.members__item:hover .member__footer {
+		display:none;
 		}
 		.member__social {
-
+			margin:0 0 16px;
 			}
 			.member__social_item {
 				display: inline-block;
@@ -958,7 +1003,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cce25e97', e
 				height:16px;
 				text-indent:-9999px;
 				overflow:hidden;
-				background:yellow;
 				}
 				.member__social_item a {
 					display:block;
@@ -966,10 +1010,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cce25e97', e
 					height:16px;
 					}
 				.member__social_item a.vk {
-
+					background:url('/assets/icons/top-social.png') top left no-repeat;
 					}
 				.member__social_item a.fb {
-
+					background:url('/assets/icons/top-social.png') top right no-repeat;
 					}
 				.member__social_item a:hover {
 					opacity:0.9;
