@@ -27,12 +27,16 @@ $(document).ready(function(){
 
       // handlers for participate form
       $("#participate form").bind('ajax:success', function(evt, data, status, xhr) {
-            $('#overlay, #participate').hide();
+            $('#participate_btn').hide();
+            popup__show('message')
       });
+});
+
+showMessage = function(header, message) {
+  popup__show('message');
+}
 
 
-
-})
 
 refreshRating = function() {
 	$.get('/rating', function(data) {
