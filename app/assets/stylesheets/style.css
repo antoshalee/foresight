@@ -829,8 +829,6 @@ a:active {
 			}
 		.sliderorgs .sliderpartners__list {
 			height:400px !important;
-			}
-		.sliderorgs .sliderpartners__list {
 			text-align:left;
 			}
 			.sliderpartners__item {
@@ -1165,3 +1163,7 @@ a:active {
 	.sliderorgs .sliderpartners__item:hover .orgs__desc {
 		visibility:visible;
 		}
+
+.centered ul {
+
+	}
