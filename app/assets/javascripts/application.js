@@ -30,9 +30,18 @@ $(document).ready(function(){
             $('#participate_btn').hide();
             popup__show('message')
       });
+
+      // handlers for recommend form
+      $("#recommend form").bind('ajax:success', function(evt, data, status, xhr) {
+            $('#recommend-url').val('');
+            $('#recommend-desc').val('');
+            showMessage('Все получилось!', data.name + ' был зарегистрирован как участник Foresight')
+      });
 });
 
 showMessage = function(header, message) {
+  $('#message h2').html(header);
+  $('#message .popup__body').html(message);
   popup__show('message');
 }
 

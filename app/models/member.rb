@@ -1,11 +1,12 @@
+# -*- encoding : utf-8 -*-
 class Member < ActiveRecord::Base
   # attr_accessible :title, :body
 
   has_many :votes, dependent: :destroy
   has_many :users, through: :votes
 
-  validates :vkontakte_uid, uniqueness: {allow_nil: true}
-  validates :facebook_uid, uniqueness: {allow_nil: true}
+  validates :vkontakte_uid, uniqueness: {allow_nil: true, message: 'Данный пользователь Вконтакте уже зарегистрирован как участник'}
+  validates :facebook_uid, uniqueness: {allow_nil: true, message: 'Данный пользователь Facebook уже зарегистрирован как участник'}
 
   def name
     "#{first_name} #{last_name}"

@@ -1,2 +1,2 @@
 object @member
-attributes :rating, :activated
+attributes :name, :rating, :activated

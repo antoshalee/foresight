@@ -17,6 +17,7 @@ gem 'fb_graph'
 gem 'thin'
 gem 'haml'
 gem 'rabl'
+gem 'russian'
 
 gem 'cancan'
 # Gems used only for assets and not required

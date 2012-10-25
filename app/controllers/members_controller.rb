@@ -34,25 +34,34 @@ class MembersController < ApplicationController
   def create
     return render_error 'Не заполнено поле Рекомендация' if params[:message].blank?
 
-    @social_manager = Social::ManagerFactory.get_manager_by_social_network params[:social_network]
-    return render_error 'Неизвестная соцсеть' if !@social_manager
+    provider = 'vkontakte'
 
-    domain = @social_manager.extract_domain_from_url params[:social_url]
+    domain = try_get_domain provider, params[:url]
+    unless domain
+      provider = 'facebook'
+      domain = try_get_domain provider, params[:url]
+    end
+
     unless domain
       return render status: 422, json: {errors: 'Неправильная ссылка'}
     end
 
     begin
-      create_member params[:social_network], domain, params[:message]
+      create_member provider, domain, params[:message]
     rescue VkontakteApi::Error
       render status: 422, json: {errors: 'Не удалось найти пользователя Vk'}
     rescue FbGraph::Unauthorized
       render status: 422, json: {errors: 'Не удалось найти пользователя Facebook'}
     rescue Exception => e
-      render status: 422, json: {errors: 'Произошла ошибка'+e.message}
+      render status: 422, json: {errors: e.message}
     else
       render 'show'
     end
+  end
+
+  def try_get_domain provider, url
+    @social_manager = Social::ManagerFactory.get_manager_by_social_network provider
+    @social_manager.extract_domain_from_url params[:url]
   end
 
   def create_member provider, domain, message
@@ -167,6 +176,7 @@ class MembersController < ApplicationController
   end
 
   def create_vote member, message = nil
+    raise 'Вы уже голосовали за этого участника' if (current_user.members.include? member)
     Vote.create!(member: member, user: current_user, message: message)
   end
 
