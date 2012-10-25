@@ -608,7 +608,7 @@ a:active {
 .signup {
 	position:absolute;
 	top:95px;
-	right:0;
+	right:10px;
 	line-height:0;
 	}
 
@@ -714,8 +714,7 @@ a:active {
 	position:relative;
 	}
 	.expert__main {
-		/* height:288px; */
-		height:180px;
+		height:288px;
 		border-bottom:2px solid #350f41;
 		}
 		.expert__photo_wrap {
