@@ -2,24 +2,52 @@
   .section__wrapper
     .section__wrap
       %h2.section__header Организаторы
-      .sliderpartners
-        %ul.sliderpartners__list
-          %li.sliderpartners__item
-            .partner
-              .partner__logo
-                %img.partner__logo_image{:alt => "", :src => "content/logo-1.gif"}
-              .partner__desc Рекламное агентство «Stive&Barton»
-          %li.sliderpartners__item
-            .partner
-              .partner__logo
-                %img.partner__logo_image{:alt => "", :src => "content/logo-2.gif"}
-              .partner__desc Кинотеатр «Дом кино»
-          %li.sliderpartners__item
-            .partner
-              .partner__logo
-                %img.partner__logo_image{:alt => "", :src => "content/logo-2.gif"}
-              .partner__desc Кинотеатр «Дом кино»
-        .sliderpartners__control
-          .sliderpartners__prev
-          .sliderpartners__next
+      .sliderpartners.sliderorgs
+        .sliderpartners__wrap
+          %ul.sliderpartners__list
+            %li.sliderpartners__item>
+              .orgs
+                .orgs__photo
+                  %img.orgs__photo_image{:alt => "", :src => "/assets/orgs/okruh.png"}
+                .orgs__name Станислав Окрух
+                .orgs__desc 
+            %li.sliderpartners__item>
+              .orgs
+                .orgs__photo
+                  %img.orgs__photo_image{:alt => "", :src => "/assets/orgs/myasnikov.png"}
+                .orgs__name Сергей Мясников
+                .orgs__desc Консультант по разработке и проведению коммуникативных кампаний, преподаватель кафедры общественных связей СибГАУ, руководитель лаборатории социальной рекламы “Альтернатива”, блоггер, специалист по маркетингу в социальных медиа, официальный представитель “Живого журнала” в Красноярске.
+            %li.sliderpartners__item>
+              .orgs
+                .orgs__photo
+                  %img.orgs__photo_image{:alt => "", :src => "/assets/orgs/kryukov.png"}
+                .orgs__name Иван Крюков
+                .orgs__desc 
+            %li.sliderpartners__item>
+              .orgs
+                .orgs__photo
+                  %img.orgs__photo_image{:alt => "", :src => "/assets/orgs/dadasheva.png"}
+                .orgs__name Вера Дадашева
+                .orgs__desc 
+            %li.sliderpartners__item>
+              .orgs
+                .orgs__photo
+                  %img.orgs__photo_image{:alt => "", :src => "/assets/orgs/efimov.png"}
+                .orgs__name Валерий Ефимов
+                .orgs__desc 
+            %li.sliderpartners__item>
+              .orgs
+                .orgs__photo
+                  %img.orgs__photo_image{:alt => "", :src => "/assets/orgs/khvostenko.png"}
+                .orgs__name Алексей Хвостенко
+                .orgs__desc 
+            %li.sliderpartners__item>
+              .orgs
+                .orgs__photo
+                  %img.orgs__photo_image{:alt => "", :src => "/assets/orgs/urazov.png"}
+                .orgs__name Максим Уразов
+                .orgs__desc 
+        .sliderorgs__control
+          .sliderorgs__prev
+          .sliderorgs__next
     .section__helper

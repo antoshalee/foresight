@@ -5,6 +5,7 @@ $(document).ready(function(){
 	winW = $(window).width();
 	winH = $(window).height();
 
+	if (winW<980) winW = 980;
 
 	commonHandlers();
 
@@ -19,6 +20,14 @@ $(document).ready(function(){
 	// Community
 	community();
 
+	// Orgs
+	orgs();
+	$('.sliderorgs .sliderpartners__list').slideIt({
+		'time' : '400',
+		'prev' : '.sliderorgs .sliderorgs__prev',
+		'next' : '.sliderorgs .sliderorgs__next'
+	});
+
 	// Sign up
 	popup__init();
 
@@ -31,8 +40,11 @@ function commonHandlers() {
 		winW = $(window).outerWidth();
 		winH = $(window).height();
 
+		if (winW<980) winW = 980;
+
 		experts();
 		community();
+		orgs();
 	});
 
 	$('.sitenav__link').bind('click', function(){
@@ -57,7 +69,18 @@ function community() {
 	var top = $('.community__top_body');
 	if (winW>1500) top.css('width','1400px');
 	else top.css('width','700px');
-	console.log(winW);
+}
+
+function orgs() {
+	var layer = $('.sliderorgs .sliderpartners__list');
+	var elems = $('.sliderorgs .sliderpartners__item');
+	var elemsCount = elems.size();
+	var elemsWidth = 200;
+
+	// Elems on slide
+	var elemsScreenCount = Math.floor((winW-150)/elemsWidth);
+	var wrapperWidth = elemsScreenCount * elemsWidth;
+	$('.sliderpartners__wrap').css('width', wrapperWidth+'px');
 }
 
 function popup__init() {
