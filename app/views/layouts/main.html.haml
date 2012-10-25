@@ -39,13 +39,10 @@
               %a.social__link.vk{:href => "http://vk.com/braincamp"} Вконтакте
             -# %li.social__item
               %a.social__link.fb{:href => "#"} Фейсбук
+        .signup
+          =#%span.signup__button.button.js_popup{"data-rel"=>:register} Зарегистрироваться
         / div class="signup"><span class="signup__button button">Зарегистрироваться</span></div
-    = render 'layouts/sections/main'
-    = render 'layouts/sections/about'
-    = render 'layouts/sections/idea'
-    = #render 'layouts/sections/experts', experts: experts
-    = render 'layouts/sections/orgs'
-    = render 'layouts/sections/partners'
+    = yield :sections
     %footer#footer{:role => "contentinfo"}
       .footer__wrap
         .development
@@ -58,3 +55,25 @@
             на базе Управления по молодежной политике администрации города Красноярска в рамках
             %a{:href => "http://www.kmforum.ru/"} Молодежной недели КМФ
           %p Контакт-центр: +7 (391) 245-45-45
+    #overlay
+    .popup#register
+      %h2.popup__header Регистрация участника
+      .popup__body
+        %form{:action => "/", :method => "post"}
+          .field
+            %label.label{:for => "register-url"} Ссылка на вашу страницу в социальной сети
+            .input__wrap
+              %input#register-url.input{:name => "url", :type => "text"}
+          .field
+            %span.label.centered Перейти на страницу в социальной сети
+            %ul.socialbuttons
+              %li.socialbuttons__item
+                %a.vk{:href => "#"}
+              %li.socialbuttons__item
+                %a.fb{:href => "#"}
+          .field
+            %label.label{:for => "register-desc"} Ссылка на вашу страницу в социальной сети
+            .input__wrap
+              %textarea#register-desc.textarea{:name => "url"}
+          .submit
+            %button.button{:type => "submit"} Зарегистрироваться
