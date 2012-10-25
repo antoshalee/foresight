@@ -65,6 +65,7 @@ Foresight::Application.routes.draw do
   # just remember to delete public/index.html.
 
   get "secret"=> 'start#secret'
+  get "layout"=> 'start#layout'
 
   root :to => 'start#index'
 

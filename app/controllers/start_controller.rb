@@ -9,6 +9,9 @@ class StartController < ApplicationController
     render layout: 'application'
   end
 
+  def layout
+  end
+
   def rating
     render partial: 'rating'
   end
