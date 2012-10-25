@@ -14,6 +14,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   private
 
   def login data, domain
+
     provider = data["provider"]
     uid = data["uid"].to_s
     auth = Auth.find_by_provider_and_uid(provider, uid)
@@ -29,8 +30,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         sign_in_with_remember user
       end
     end
-
-    redirect_to :root
+    flash["return_to"] = request.env["omniauth.params"]['return_to']
+    redirect_to secret_path
   end
 
   def sign_in_with_remember user

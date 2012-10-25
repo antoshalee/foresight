@@ -1,3 +1,6 @@
+- content_for :menu do
+  %li.sitenav__item
+    %span.sitenav__link{"data-href" => "community"} Сообщество
 %section.section.community
   .section__wrapper
     .section__wrap
@@ -15,8 +18,8 @@
         .community__top_header ТОП-10
         .community__top_body
           %ol.members
-            = render 'layouts/sections/members'
+            = render 'layouts/sections/members', all:false
         .community__allmembers
-          %span.button.violet Показать весь список
+          = link_to 'Показать весь список', members_path, method: :get, remote: true, id: 'allmembers_link', class: 'button violet'
     .section__helper
   .community__triangle

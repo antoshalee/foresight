@@ -10,6 +10,12 @@
       = javascript_include_tag :application
       = csrf_meta_tags
       = render 'layouts/ya_metrika'
+      - unless flash["return_to"].nil?
+        %script(type="text/javascript")
+          var returnTo = '#{flash["return_to"]}';
+      - else
+        %script(type="text/javascript")
+          var returnTo = null;
   %body
     %header#header{:role => "banner"}
       .header__wrap
@@ -18,18 +24,7 @@
             %img.logo__image{:alt => "Foresight", :height => "50", :src => "/assets/logo.gif", :width => "165"}/
         %nav.sitenav
           %ul.sitenav__list
-            %li.sitenav__item
-              %span.sitenav__link{"data-href" => "about"} Что такое Foresight?
-            %li.sitenav__item
-              %span.sitenav__link{"data-href" => "idea"} Идея проекта
-            -# %li.sitenav__item
-              %span.sitenav__link{"data-href" => "experts"} Экспертный совет
-            %li.sitenav__item
-              %span.sitenav__link{"data-href" => "orgs"} Организаторы
-            %li.sitenav__item
-              %span.sitenav__link{"data-href" => "partners"} Партнеры
-            / li class="sitenav__item"><span class="sitenav__link" data-href="partners">Партнеры</span></li
-            / li class="sitenav__item"><span class="sitenav__link" data-href="experts">Foresight-сообщество</span></li
+            = yield :menu
         .social
           %ul.social__list
             %li.social__item

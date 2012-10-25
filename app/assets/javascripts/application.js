@@ -14,16 +14,27 @@
 //= require jquery_ujs
 //= require_tree .
 
+var showAll = false;
+
 $(document).ready(function(){
 
-      // global form handlers
+  if (returnTo) {
+    popup__show(returnTo);
+    $('body').scrollTo( $('.community'), 1000 );
+  }
+
+  // global form handlers
 	$("body")
       .on('ajax:success', "form, .destroy_link", function(evt, data, status, xhr) {
       	refreshRating();
       })
       .on('ajax:error', "form, .destroy_link", function(xhr, status, error) {
-      	console.log($.parseJSON(status.responseText).errors);
+      	alert($.parseJSON(status.responseText).errors);
       })
+      .on('ajax:success', '.button.vote', function(evt, data, status, xhr) {
+          $(this).hide();
+          $(this).parent().parent().find('.member__count').html(data.rating);
+      });
 
       // handlers for participate form
       $("#participate form").bind('ajax:success', function(evt, data, status, xhr) {
@@ -35,8 +46,16 @@ $(document).ready(function(){
       $("#recommend form").bind('ajax:success', function(evt, data, status, xhr) {
             $('#recommend-url').val('');
             $('#recommend-desc').val('');
-            showMessage('Все получилось!', data.name + ' был зарегистрирован как участник Foresight')
+            showMessage('Все получилось!', data.name + ' был зарегистрирован как участник Foresight');
+            refreshRating();
       });
+
+      // handlers for get all rating
+      $("#allmembers_link").bind('ajax:success', function(evt, data, status, xhr) {
+          $('.members').html(data);
+          showAll = true;
+      });
+
 });
 
 showMessage = function(header, message) {
@@ -46,9 +65,13 @@ showMessage = function(header, message) {
 }
 
 
-
 refreshRating = function() {
-	$.get('/rating', function(data) {
-		$('.rating').html(data);
-	})
+  $.get(
+    '/members',
+    {all: showAll},
+    function(data) {
+      $('.members').html(data);
+    }
+  );
+
 }
