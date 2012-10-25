@@ -26,6 +26,17 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       user.auths.build(provider: provider, uid: uid, user: user, domain: domain)
       user.first_name = data["info"]["first_name"]
       user.last_name = data["info"]["last_name"]
+
+      if provider=='vkontakte'
+        member = Member.find_by_vkontakte_uid(uid)
+      elsif provider=='facebook'
+        member = Member.find_by_facebook_uid(uid)
+      end
+
+      if member
+        user.member = member
+      end
+
       if user.save
         sign_in_with_remember user
       end
