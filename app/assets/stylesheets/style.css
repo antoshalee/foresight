@@ -166,8 +166,8 @@ a:active {
 	}
 	.header__wrap {
 		position:relative;
-		display:inline-block;
-		vertical-align:top;
+		/*display:inline-block;
+		vertical-align:top;*/
 		height:94px;
 		}
 		#logo {
@@ -966,14 +966,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cce25e97', e
 					height:16px;
 					}
 				.member__social_item a.vk {
-					
+
 					}
 				.member__social_item a.fb {
-					
+
 					}
 				.member__social_item a:hover {
 					opacity:0.9;
 					}
 				.member__social_item a:active {
-					
+
 					}

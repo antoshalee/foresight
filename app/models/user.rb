@@ -9,6 +9,10 @@ class User < ActiveRecord::Base
 
   attr_accessible :remember_me
 
+  def current_auth
+    auths.first
+  end
+
   def name
     "#{first_name} #{last_name}"
   end

@@ -66,6 +66,7 @@ Foresight::Application.routes.draw do
 
   get "secret"=> 'start#secret'
   get "layout"=> 'start#layout'
+  post "participate" => 'members#participate'
 
   root :to => 'start#index'
 

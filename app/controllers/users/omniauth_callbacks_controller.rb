@@ -1,16 +1,17 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def facebook
-    login request.env["omniauth.auth"]
+    data = request.env["omniauth.auth"]
+    domain = data["info"]["nickname"]
+    login data, domain
   end
 
   def vkontakte
-    session['vk_access_token'] = request.env["omniauth.auth"]["credentials"]["token"]
     login request.env["omniauth.auth"]
   end
 
   private
 
-  def login data
+  def login data, domain
     provider = data["provider"]
     uid = data["uid"].to_s
     auth = Auth.find_by_provider_and_uid(provider, uid)
@@ -19,7 +20,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       sign_in_with_remember auth.user
     else
       user = User.new
-      user.auths.build(provider: provider, uid: uid, user: user)
+      user.auths.build(provider: provider, uid: uid, user: user, domain: domain)
       user.first_name = data["info"]["first_name"]
       user.last_name = data["info"]["last_name"]
       if user.save

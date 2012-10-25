@@ -16,10 +16,10 @@
 
 $(document).ready(function(){
 	$("body")
-      .on('ajax:success', ".add_member_form, .destroy_link", function(evt, data, status, xhr) {
+      .on('ajax:success', "form, .destroy_link", function(evt, data, status, xhr) {
       	refreshRating();
       })
-      .on('ajax:error', ".add_member_form, .destroy_link", function(xhr, status, error) {
+      .on('ajax:error', "form, .destroy_link", function(xhr, status, error) {
       	console.log($.parseJSON(status.responseText).errors);
       })
 })

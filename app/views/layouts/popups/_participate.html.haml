@@ -1,21 +1,10 @@
 .popup#participate
   %h2.popup__header Регистрация участника
   .popup__body
-    %form{:action => "/", :method => "post"}
+    = form_tag participate_path, remote: true, method: :post, :'data-type' => :json do
       .field
-        %label.label{:for => "register-url"} Ссылка на вашу страницу в социальной сети
+        %label.label{:for => "register-desc"} Расскажите немного о себе
         .input__wrap
-          %input#register-url.input{:name => "url", :type => "text"}
-      .field
-        %span.label.centered Перейти на страницу в социальной сети
-        %ul.socialbuttons
-          %li.socialbuttons__item
-            %a.vk{:href => "#"}
-          %li.socialbuttons__item
-            %a.fb{:href => "#"}
-      .field
-        %label.label{:for => "register-desc"} Ссылка на вашу страницу в социальной сети
-        .input__wrap
-          %textarea#register-desc.textarea{:name => "url"}
+          %textarea#register-desc.textarea{:name => "message"}
       .submit
         %button.button{:type => "submit"} Зарегистрироваться

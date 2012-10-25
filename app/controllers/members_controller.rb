@@ -7,6 +7,30 @@ class MembersController < ApplicationController
     render 'start/index'
   end
 
+  def participate
+    return render_error 'Не заполнено поле "О себе"' if params[:message].blank?
+
+    auth = current_user.current_auth
+    provider = auth.provider
+    uid = auth.uid
+    domain = auth.domain
+
+    if provider=='vkontakte'
+      member = Member.find_by_vkontakte_uid(uid)
+    elsif provider=='facebook'
+      member = Member.find_by_facebook_uid(uid)
+    end
+    begin
+      unless member
+        create_member provider, domain, params[:message]
+      end
+    rescue Exception => e
+      render status: 422, json: {errors: 'Произошла ошибка'+e.message}
+    else
+      render 'show'
+    end
+  end
+
   def create
     return render_error 'Не заполнено поле Рекомендация' if params[:message].blank?
 
@@ -19,15 +43,7 @@ class MembersController < ApplicationController
     end
 
     begin
-      if params[:social_network] == "vkontakte"
-        @member = build_member_by_vk_domain domain
-      elsif params[:social_network] == "facebook"
-        @member = build_member_by_fb_domain domain
-      end
-      ActiveRecord::Base.transaction do
-        @member.save!
-        create_vote @member, params[:message] # adding a member means automatically voting for him
-      end
+      create_member params[:social_network], domain, params[:message]
     rescue VkontakteApi::Error
       render status: 422, json: {errors: 'Не удалось найти пользователя Vk'}
     rescue FbGraph::Unauthorized
@@ -36,6 +52,18 @@ class MembersController < ApplicationController
       render status: 422, json: {errors: 'Произошла ошибка'+e.message}
     else
       render 'show'
+    end
+  end
+
+  def create_member provider, domain, message
+    if provider == "vkontakte"
+      @member = build_member_by_vk_domain domain
+    elsif provider == "facebook"
+      @member = build_member_by_fb_domain domain
+    end
+    ActiveRecord::Base.transaction do
+      @member.save!
+      create_vote @member, message # adding a member means automatically voting for him
     end
   end
 

@@ -6,10 +6,8 @@
       %script{:src => "http://html5shiv.googlecode.com/svn/trunk/html5.js"}
       %link{:href => "/assets/style.css", :rel => "stylesheet", :type => "text/css"}
       / script src="http://code.jquery.com/jquery-latest.min.js"></script
-      %script{:src => "http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"}
-      %script{:src => "/assets/slideit.js"}
-      %script{:src => "/assets/scrollto.js"}
-      %script{:src => "/assets/main.js"}
+      = javascript_include_tag :application
+      = csrf_meta_tags
       = render 'layouts/ya_metrika'
   %body
     %header#header{:role => "banner"}
@@ -41,7 +39,10 @@
               %a.social__link.fb{:href => "#"} Фейсбук
         .signup
           - if @with_register
-            %span.signup__button.button.js_popup{"data-rel"=>:register} Вход
+            - if user_signed_in?
+              %span.signup__button.button{href: destroy_user_session_path, style: 'text-decoration: none'}
+                = "Вы вошли как #{current_user.name}"
+                = link_to "Выйти", destroy_user_session_path
     = yield :sections
     %footer#footer{:role => "contentinfo"}
       .footer__wrap

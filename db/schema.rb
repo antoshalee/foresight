@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121021134031) do
+ActiveRecord::Schema.define(:version => 20121025093251) do
 
   create_table "auths", :force => true do |t|
     t.string   "provider"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20121021134031) do
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "domain"
   end
 
   add_index "auths", ["provider"], :name => "index_auths_on_provider"
