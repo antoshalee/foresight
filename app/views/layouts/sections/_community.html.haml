@@ -19,7 +19,10 @@
               %li.members__item>
                 .member
                   %img.member__photo{:alt => "", :height => "90", :src => m.photo, :width => "90"}
-                  .member__name= m.name
+                  .member__name
+                    = m.first_name
+                    %br
+                    = m.last_name
                   =#.member__desc Управленец, предприниматель
                   .member__share
                     Place for share buttons
