@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+	
 	docW = $(document).width();
 	docH = $(document).height();
 	winW = $(window).width();
@@ -16,19 +16,23 @@ $(document).ready(function(){
 		'next' : '.sliderexperts__next'
 	});
 
+	// Community
+	community();
+
 	// Sign up
 	popup__init();
 
 });
 
 function commonHandlers() {
-	$(window).bind('resize', function(){
+	$(window).resize(function(){
 		docW = $(document).width();
 		docH = $(document).height();
 		winW = $(window).outerWidth();
 		winH = $(window).height();
 
 		experts();
+		community();
 	});
 
 	$('.sitenav__link').bind('click', function(){
@@ -49,6 +53,12 @@ function experts() {
 	$('.sliderexperts__wrap').css('width', wrapperWidth+'px');
 }
 
+function community() {
+	var top = $('.community__top_body');
+	if (winW>1500) top.css('width','1400px');
+	else top.css('width','700px');
+	console.log(winW);
+}
 
 function popup__init() {
 	var popup = $('.popup')
@@ -78,6 +88,6 @@ function popup__show(rel) {
 		.css({'opacity':0,'display':'block'})
 		.stop()
 		.animate({'opacity':1},300)
-
+		
 	if ( $('.scrollpane_popup').size() ) $('.scrollpane_popup').jScrollPane()
 }
