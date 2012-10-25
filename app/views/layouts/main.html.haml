@@ -40,8 +40,8 @@
             -# %li.social__item
               %a.social__link.fb{:href => "#"} Фейсбук
         .signup
-          =#%span.signup__button.button.js_popup{"data-rel"=>:register} Зарегистрироваться
-        / div class="signup"><span class="signup__button button">Зарегистрироваться</span></div
+          - if @with_register
+            %span.signup__button.button.js_popup{"data-rel"=>:register} Вход
     = yield :sections
     %footer#footer{:role => "contentinfo"}
       .footer__wrap
@@ -56,24 +56,5 @@
             %a{:href => "http://www.kmforum.ru/"} Молодежной недели КМФ
           %p Контакт-центр: +7 (391) 245-45-45
     #overlay
-    .popup#register
-      %h2.popup__header Регистрация участника
-      .popup__body
-        %form{:action => "/", :method => "post"}
-          .field
-            %label.label{:for => "register-url"} Ссылка на вашу страницу в социальной сети
-            .input__wrap
-              %input#register-url.input{:name => "url", :type => "text"}
-          .field
-            %span.label.centered Перейти на страницу в социальной сети
-            %ul.socialbuttons
-              %li.socialbuttons__item
-                %a.vk{:href => "#"}
-              %li.socialbuttons__item
-                %a.fb{:href => "#"}
-          .field
-            %label.label{:for => "register-desc"} Ссылка на вашу страницу в социальной сети
-            .input__wrap
-              %textarea#register-desc.textarea{:name => "url"}
-          .submit
-            %button.button{:type => "submit"} Зарегистрироваться
+    = render 'layouts/popups/register'
+    = render 'layouts/popups/participate'

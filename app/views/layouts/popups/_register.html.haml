@@ -1,0 +1,11 @@
+.popup#register
+  %h2.popup__header Вход через социальную сеть
+  .popup__body
+    %form{:action => "/", :method => "post"}
+      .field
+        %span.label.centered Войдите, чтобы иметь возможность проголосовать, стать участником или порекомендовать друга.
+        %ul.socialbuttons
+          %li.socialbuttons__item
+            %a.vk{:href => user_omniauth_authorize_path(:vkontakte)}
+          %li.socialbuttons__item
+            %a.fb{:href => user_omniauth_authorize_path(:facebook)}

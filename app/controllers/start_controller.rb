@@ -3,13 +3,15 @@ class StartController < ApplicationController
   layout "main"
 
   def index
+    @with_register = false
   end
 
   def secret
-    render layout: 'application'
+    @with_register = true
   end
 
   def layout
+    @with_register = true
   end
 
   def rating
