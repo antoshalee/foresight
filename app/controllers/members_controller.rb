@@ -172,9 +172,9 @@ class MembersController < ApplicationController
     member.last_name = fb_result.last_name
 
     array = FbGraph::Query.new(
-      "SELECT pic FROM user WHERE uid = #{fb_result.identifier}"
+      "SELECT url FROM profile_pic WHERE id = #{fb_result.identifier} AND width=90 AND height=90"
     ).fetch
-    member.photo = array[0]["pic"] if array[0]
+    member.photo = array[0]["url"] if array[0]
 
     #member.photo = fb_result.picture :square
   end
