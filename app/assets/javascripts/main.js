@@ -7,12 +7,8 @@ $(document).ready(function(){
 
 	if (winW<980) winW = 980;
 
-	$('.flag').css({'position':'fixed', 'top':0, 'left':0, 'bottom':0, 'width':'1px', 'height':'100%', 'background':'red'});
-
 	commonHandlers();
 	commonInit();
-
-	
 
 });
 

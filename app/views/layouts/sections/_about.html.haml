@@ -1,6 +1,6 @@
 - content_for :menu do
   %li.sitenav__item
-    %span.sitenav__link{"data-href" => "about"} О проекте
+    %span.sitenav__link{"data-href" => "about"} Идея
 %a.flag{:name => "about"}
 %section.section.about#about
   .section__wrap
@@ -9,7 +9,7 @@
         %td.about__main_before
           .about__main_before_wrap  
         %td.about__main
-          %h2.section__header Что такое Foresight?
+          %h2.section__header Идея проекта
           .section__text.usercontent
             %p
               250 активных жителей нашего города разных возрастов и профессий при поддержке ведущих федеральных экспертов примут участие в 
@@ -27,6 +27,10 @@
               %li Обсуждение видения будущего города Красноярска до 2030 года;
               %li Оформление 3-5 альтернативных сценариев развития города;
               %li Построение дорожной карты.
+          .fulldescription
+            %a.button{href: '/foresight.pdf', style: 'text-decoration:none', target: '_blank'}
+              %span.button__wrap Скачать полное описание
+              %span.button__subtext PDF (0.3 МБ)
         %td.about__main_after
           .about__main_after_wrap  
   .section__helper

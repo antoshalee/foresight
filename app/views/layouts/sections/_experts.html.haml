@@ -5,7 +5,7 @@
 %section.section.experts#experts
   .section__wrapper
     .section__wrap
-      %h2.section__header Экспертный совет
+      %h2.section__header Эксперты
       .sliderexperts
         .sliderexperts__wrap
           %ul.sliderexperts__list
@@ -26,10 +26,10 @@
                     %ul.expert__social
                       - if e[:vk_url]
                         %li.expert__social_item
-                          %a.expert__social_link.vk{:href => e[:vk_url]} Вконаткте
+                          %a.expert__social_link.vk{:href => e[:vk_url], :target => "_blank"} Вконаткте
                       - if e[:fb_url]
                         %li.expert__social_item
-                          %a.expert__social_link.fb{:href => e[:fb_url]} Фейсбук
+                          %a.expert__social_link.fb{:href => e[:fb_url], :target => "_blank"} Фейсбук
         .sliderexperts__control
           .sliderexperts__prev
           .sliderexperts__next

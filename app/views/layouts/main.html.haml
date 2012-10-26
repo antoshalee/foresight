@@ -28,11 +28,11 @@
         .social
           %ul.social__list
             %li.social__item
-              %a.social__link.tw{:href => "https://twitter.com/braincamp1"} Твитер
+              %a.social__link.tw{:href => "https://twitter.com/braincamp1", :target => "_blank"} Твитер
             %li.social__item
-              %a.social__link.vk{:href => "http://vk.com/braincamp"} Вконтакте
+              %a.social__link.vk{:href => "http://vk.com/braincamp", :target => "_blank"} Вконтакте
             -# %li.social__item
-              %a.social__link.fb{:href => "#"} Фейсбук
+              %a.social__link.fb{:href => "#", :target => "_blank"} Фейсбук
         .signup
           - if @with_register
             - if user_signed_in?
