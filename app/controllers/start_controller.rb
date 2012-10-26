@@ -3,7 +3,7 @@ class StartController < ApplicationController
   layout "main"
 
   def index
-    @with_register = false
+    @with_register = true
   end
 
   def secret
