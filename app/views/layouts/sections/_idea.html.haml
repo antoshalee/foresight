@@ -1,7 +1,8 @@
 - content_for :menu do
   %li.sitenav__item
     %span.sitenav__link{"data-href" => "idea"} Расписание
-%section.section.idea
+%a.flag{:name => "idea"}
+%section.section.idea#idea
   .section__wrap
     %h2.section__header Дата и время проведения
     .section__text.usercontent.textcenter

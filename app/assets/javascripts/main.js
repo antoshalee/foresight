@@ -7,8 +7,12 @@ $(document).ready(function(){
 
 	if (winW<980) winW = 980;
 
+	$('.flag').css({'position':'fixed', 'top':0, 'left':0, 'bottom':0, 'width':'1px', 'height':'100%', 'background':'red'});
+
 	commonHandlers();
 	commonInit();
+
+	
 
 });
 
@@ -31,9 +35,26 @@ function commonHandlers() {
 		commonInit();
 	});
 
+	$(window).bind('scroll', function() {
+		var temp = '';
+		$('.flag').each(function(){
+			var section = $('#'+$(this).attr('name'));
+			var sectionY = section.position().top;
+			var currentY = $('#header').position().top;
+			if (currentY>=sectionY) {
+				temp = section.attr('id');
+			} else {
+				//location.hash = '#'+temp;
+				//console.log(temp);
+			}
+		});
+	});
+
 	$('.sitenav__link').bind('click', function(){
 		var target = $(this).attr('data-href');
-		$('body').scrollTo( $('.'+target), 1000 );
+		$('body').scrollTo( $('.'+target), 1000, function(){
+			location.hash = '#'+target;
+		});	
 	});
 }
 

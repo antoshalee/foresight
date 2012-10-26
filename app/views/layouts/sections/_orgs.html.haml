@@ -1,7 +1,8 @@
 - content_for :menu do
   %li.sitenav__item
     %span.sitenav__link{"data-href" => "orgs"} Организаторы
-%section.section.orgs
+%a.flag{:name => "orgs"}
+%section.section.orgs#orgs
   .section__wrapper
     .section__wrap
       %h2.section__header Организаторы

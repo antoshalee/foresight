@@ -1,7 +1,8 @@
 - content_for :menu do
   %li.sitenav__item
     %span.sitenav__link{"data-href" => "experts"} Эксперты
-%section.section.experts
+%a.flag{:name => "experts"}
+%section.section.experts#experts
   .section__wrapper
     .section__wrap
       %h2.section__header Экспертный совет

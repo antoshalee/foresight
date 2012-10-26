@@ -1,7 +1,8 @@
 - content_for :menu do
   %li.sitenav__item
     %span.sitenav__link{"data-href" => "about"} О проекте
-%section.section.about
+%a.flag{:name => "about"}
+%section.section.about#about
   .section__wrap
     %table.about__main_wrap{:cellpadding => "0", :cellspacing => "0"}
       %tr

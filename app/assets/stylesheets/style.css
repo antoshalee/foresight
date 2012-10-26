@@ -21,6 +21,11 @@ a:hover {
 a:active {
 	color:red;
 	}
+a.flag {
+	display:block;
+	width:0;
+	height:0;
+	}
 
 /* USER INTERFACE */
 .button {
