@@ -452,12 +452,23 @@ a.flag {
 				margin:auto;
 				width:980px;
 				border-bottom:1px solid #3b96cf;
+				color:#fff;
+				text-align:center;
 				}
 				.section__subheader {
 					margin:0 0 33px;
 					color:#62125a;
 					text-shadow:1px 2px 0 rgba(0,0,0,0.1);
 					font:26px "goodcyr-book", Arial, Helvetica, sans-serif;
+					}
+				.section.community ul {
+					text-align:left;
+					width:600px;
+					color:#000;
+					background:#fff;
+					margin:9px auto 18px;
+					padding:10px 20px 2px 60px;
+					border-radius:8px;
 					}
 				.columns {
 					margin:0 -25px;
@@ -854,6 +865,7 @@ a.flag {
 		height:100px;
 		text-align:center;
 		}
+		.partner__logo_link,
 		.partner__logo_image {
 			display:inline-block;
 			vertical-align:middle;
