@@ -16,7 +16,7 @@ module ApplicationHelper
         "foresight.sfu-kras.ru", nil, "http://facebook.com/efimov.valerii", "/assets/experts/efimov.jpg"],
         [ 
         "Александра Меркулова",
-        "Архитектор-урбанист, ведущий специалист, уполномоченный по развитию российских проектов KCAP Architects&Planners.",
+        "Архитектор-урбанист, ведущий специалист, уполномоченный по развитию российских проектов KCAP Architects&Planners. г. Роттердам (Нидерланды)",
         "kcap.eu/ru/kcap/", nil, "http://www.facebook.com/alexandra.merkulova", "/assets/experts/merkulova.jpg"]
     ].map do |e|
       {name: e[0], role: e[1], web: e[2], vk_url: e[3], fb_url: e[4], img: e[5]}
