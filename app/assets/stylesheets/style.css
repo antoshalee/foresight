@@ -236,16 +236,32 @@ a.flag {
 	}
 	.footer__wrap {
 		margin:auto;
-		width:980px;
+		width:1000px;
 		}
 		.development {
 			float:right;
 			}
 		.copyrights {
-			width:640px;
+			display: inline-block;
+			vertical-align:top;
+			width:460px;
+			white-space:normal;
+			font:15px/24px "goodcyr-light", Arial, Helvetica, sans-serif;
+			margin:0 40px 0 0;
+			}
+		.contacts {
+			float:right;
+			display:inline-block;
+			vertical-align:top;
+			
 			white-space:normal;
 			font:15px/24px "goodcyr-light", Arial, Helvetica, sans-serif;
 			}
+			.contacts .phone {
+				display:block;
+				font-size:17px;
+				font-weight:bold;
+				}
 
 /* Section */
 .section {
@@ -310,7 +326,8 @@ a.flag {
 	}
 
 .section.about {
-
+	height:auto;
+	padding:100px 0 60px;
 	}
 	.section.about .section__wrap {
 		width:100%;
@@ -916,6 +933,13 @@ a.flag {
 			content:'—';
 			font-size:18px;
 			}
+	.usercontent ol {
+		margin:10px 0 0 10px;
+		}
+		.usercontent ol li {
+			list-style:decimal;
+			margin:0 0 10px 10px;
+			}
 	.usercontent dl {
 		padding:0 0 0 80px;
 		}
@@ -934,10 +958,33 @@ a.flag {
 		margin:0 auto 20px;
 		width:360px;
 		text-align:left;
+		list-style:none;
 		}
 		.usercontent .usercontent__dates li {
 			margin:0 0 20px;
+			list-style:none;
 			}
+	.usercontent table {
+		text-align:left;
+		margin:40px auto;
+		padding:100px;
+		background:rgba(255,255,255,0.2);
+		width:850px;
+		font:13px/18px "goodcyr-light", Arial, Helvetica, sans-serif;
+		}
+		.usercontent tr {
+
+			}
+			.usercontent table tr th {
+				color:#000;
+				font-weight:bold;
+				padding:6px 10px;
+				1border-bottom:1px solid #000;
+				}
+			.usercontent table tr td {
+				1border-top:1px solid #ddd;
+				padding:10px;
+				}
 
 #overlay {
 	position:fixed;
@@ -1137,7 +1184,7 @@ a.flag {
 					}
 
 .fulldescription {
-	margin:40px 0 0;
+	margin:40px 0 80px;
 	}
 
 
