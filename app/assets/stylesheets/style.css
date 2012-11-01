@@ -390,6 +390,10 @@ a.flag {
 	.section.idea .section__wrap {
 		width:980px;
 		}
+	.section.idea .section__text {
+		width:850px;
+		margin:auto;
+		}
 
 .section.experts {
 	box-shadow:inset 0 0 40px 0 rgba(0,0,0,0.5);
@@ -971,10 +975,9 @@ a.flag {
 			}
 	.usercontent table {
 		text-align:left;
-		margin:40px auto;
-		padding:100px;
+		margin:40px 0 0 -10px;
 		background:rgba(255,255,255,0.2);
-		width:850px;
+		width:840px;
 		font:13px/18px "goodcyr-light", Arial, Helvetica, sans-serif;
 		}
 		.usercontent tr {
