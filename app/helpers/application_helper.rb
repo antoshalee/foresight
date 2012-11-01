@@ -5,7 +5,7 @@ module ApplicationHelper
       [ 
         "Илья Савчук",
         "Директор по программам развития проектной группы «Метавер», соразработчик Форсайта «Образование 2030»",
-        "http://metaver.ru", "http://vk.com/id14303795", "http://facebook.com/ilya.savchuk", "/assets/experts/savchuk.jpg"],
+        "metaver.ru", "http://vk.com/id14303795", "http://facebook.com/ilya.savchuk", "/assets/experts/savchuk.jpg"],
       [
         "Юрий Воронов",
         "Генеральный директор консультационной фирмы «Корпус», вице-президент торгово-промышленной палаты.",

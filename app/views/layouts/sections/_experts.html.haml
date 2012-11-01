@@ -22,7 +22,7 @@
                     .expert__name= e[:name]
                     .expert__role= e[:role]
                   %footer.expert__footer
-                    = link_to e[:web], e[:web], class: "expert__web" if e[:web]
+                    = link_to e[:web], "http://#{e[:web]}", class: "expert__web" if e[:web]
                     %ul.expert__social
                       - if e[:vk_url]
                         %li.expert__social_item
