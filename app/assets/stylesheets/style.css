@@ -12,13 +12,18 @@ body {
 body {
 	overflow:auto;
 	}
-a {
+a,
+.pseudolink {
 	color:#009ddf;
+	text-decoration:underline;
+	cursor:pointer;
 	}
-a:hover {
+a:hover,
+.pseudolink:hover {
 	text-decoration:none;
 	}
-a:active {
+a:active,
+.pseudolink:active {
 	color:red;
 	}
 a.flag {
