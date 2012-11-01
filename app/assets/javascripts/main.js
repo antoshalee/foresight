@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	
+
 	docW = $(document).width();
 	docH = $(document).height();
 	winW = $(window).width();
@@ -50,7 +50,7 @@ function commonHandlers() {
 		var target = $(this).attr('data-href');
 		$('body').scrollTo( $('.'+target), 1000, function(){
 			location.hash = '#'+target;
-		});	
+		});
 	});
 }
 
@@ -126,7 +126,9 @@ function popup__init() {
 		el.css({'margin':mt+'px 0 0 '+ml+'px'})
 	})
 	// Open popup
-	$('.js_popup').bind('click',function(){
+
+	//$('.js_popup').bind('click',function(){
+	$("body").on('click','.js_popup',function(){
 		var rel = $(this).attr('data-rel')
 		popup__show(rel)
 	})
@@ -144,6 +146,6 @@ function popup__show(rel) {
 		.css({'opacity':0,'display':'block'})
 		.stop()
 		.animate({'opacity':1},300)
-		
+
 	if ( $('.scrollpane_popup').size() ) $('.scrollpane_popup').jScrollPane()
 }
