@@ -245,6 +245,7 @@ a.flag {
 		}
 		.development {
 			float:right;
+			margin:0 0 0 80px;
 			}
 		.copyrights {
 			display: inline-block;
