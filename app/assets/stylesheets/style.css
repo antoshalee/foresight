@@ -569,6 +569,8 @@ a.flag {
 	}
 
 .section.partners {
+	height:auto;
+	padding:100px 0;
 	background:url('/assets/partners-bg.gif');
 	}
 	.section.partners .section__header {
@@ -897,6 +899,9 @@ a.flag {
 			position:relative;
 			white-space:nowrap;
 			}
+		#partners .sliderpartners__list {
+			white-space:normal;
+			}
 		.sliderorgs .sliderpartners__list {
 			height:400px !important;
 			text-align:left;
@@ -912,7 +917,7 @@ a.flag {
 				}
 
 .partner {
-
+	padding:0 0 100px;
 	}
 	.partner__logo {
 		margin:0 0 15px;
