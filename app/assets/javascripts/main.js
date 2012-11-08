@@ -76,6 +76,11 @@ function experts() {
 			'prev' : '.sliderexperts__prev',
 			'next' : '.sliderexperts__next'
 		});
+		$('.sliderkrskexperts__list').slideIt({
+			'time' : '400',
+			'prev' : '.sliderkrskexperts__prev',
+			'next' : '.sliderkrskexperts__next'
+		});
 	} else {
 		$('.sliderexperts__control').hide();
 		$('.sliderexperts__wrap').css('width', (elemsCount*elemsWidth)+'px');

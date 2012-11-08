@@ -33,5 +33,32 @@
         .sliderexperts__control
           .sliderexperts__prev
           .sliderexperts__next
+      .sliderkrskexperts
+        .sliderexperts__wrap
+          %ul.sliderexperts__list
+            - experts.each do |e|
+              %li.sliderexperts__item
+                .expert
+                  .expert__main
+                    /
+                      div class="expert__photo_wrap">
+                      <img src="content/expert-1.jpg" width="204" height="153" alt="" class="expert__photo">
+                      </div
+                    .expert__photo_wrap
+                      %img.expert__photo{src: e[:img], width: 204, height: 153}
+                    .expert__name= e[:name]
+                    .expert__role= e[:role]
+                  %footer.expert__footer
+                    = link_to e[:web], "http://#{e[:web]}", class: "expert__web" if e[:web]
+                    %ul.expert__social
+                      - if e[:vk_url]
+                        %li.expert__social_item
+                          %a.expert__social_link.vk{:href => e[:vk_url], :target => "_blank"} Вконаткте
+                      - if e[:fb_url]
+                        %li.expert__social_item
+                          %a.expert__social_link.fb{:href => e[:fb_url], :target => "_blank"} Фейсбук
+        .sliderexperts__control
+          .sliderexperts__prev
+          .sliderexperts__next
     .section__helper
   .experts__triangle
