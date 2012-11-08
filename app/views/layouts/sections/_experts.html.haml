@@ -34,10 +34,10 @@
           .sliderexperts__prev
           .sliderexperts__next
       .sliderkrskexperts
-        .sliderexperts__wrap
-          %ul.sliderexperts__list
-            - experts.each do |e|
-              %li.sliderexperts__item
+        .sliderkrskexperts__wrap
+          %ul.sliderkrskexperts__list
+            - krskexperts.each do |e|
+              %li.sliderkrskexperts__item
                 .expert
                   .expert__main
                     /
@@ -57,8 +57,8 @@
                       - if e[:fb_url]
                         %li.expert__social_item
                           %a.expert__social_link.fb{:href => e[:fb_url], :target => "_blank"} Фейсбук
-        .sliderexperts__control
-          .sliderexperts__prev
-          .sliderexperts__next
+        .sliderkrskexperts__control
+          .sliderkrskexperts__prev
+          .sliderkrskexperts__next
     .section__helper
   .experts__triangle
