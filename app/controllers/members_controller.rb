@@ -106,6 +106,7 @@ class MembersController < ApplicationController
   end
 
   def vote
+    return
     begin
       member = Member.find params[:id]
       create_vote member

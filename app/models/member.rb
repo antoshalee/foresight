@@ -26,10 +26,12 @@ class Member < ActiveRecord::Base
   end
 
   def vkontakte_url
+    return "" if vkontakte_domain.blank?
     "http://vk.com/#{vkontakte_domain}"
   end
 
   def facebook_url
+    return "" if facebook_domain.blank?
     "http://facebook.com/#{facebook_domain}"
   end
 
@@ -43,6 +45,10 @@ class Member < ActiveRecord::Base
 
   def has_both_social?
     self.has_vkontakte? && self.has_facebook?
+  end
+
+  def votes_description
+    Vote.where(member_id: self).where("message IS NOT NULL").map {|v| v.message}.join(" | ")
   end
 
 end
