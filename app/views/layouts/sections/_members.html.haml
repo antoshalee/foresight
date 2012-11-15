@@ -22,8 +22,8 @@
             %li.member__social_item
               %a.fb{:href => m.facebook_url, target: 'blank'} Фейсбук
 
-        - if !user_signed_in?
+        -# if !user_signed_in?
           %span.js_popup.button.vote{"data-rel" => "register"} Поддержать
           =# link_to "Поддержать", '#', class: 'js_popup button vote'
-        - if user_signed_in? && !(current_user.members.include? m)
+        -# if user_signed_in? && !(current_user.members.include? m)
           = link_to "Поддержать", vote_member_path(m), remote: true, method: :post, :"data-type" => :json, class: 'button vote'

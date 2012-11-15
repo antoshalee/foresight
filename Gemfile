@@ -36,6 +36,7 @@ gem 'jquery-rails'
 
 group :development do
   gem 'rb-readline'
+  gem 'fastercsv'
 end
 
 group :test, :development do

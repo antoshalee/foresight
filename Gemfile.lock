@@ -58,6 +58,7 @@ GEM
     faraday_middleware-parse_oj (0.1)
       faraday_middleware (~> 0.8)
       oj (~> 1.2)
+    fastercsv (1.5.5)
     fb_graph (2.5.5)
       httpclient (>= 2.2.0.2)
       json
@@ -197,6 +198,7 @@ DEPENDENCIES
   cancan
   coffee-rails (~> 3.2.1)
   devise
+  fastercsv
   fb_graph
   haml
   jquery-rails
