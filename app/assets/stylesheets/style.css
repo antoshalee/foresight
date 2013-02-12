@@ -294,8 +294,8 @@ a.flag {
 			}
 			.section__header {
 				margin:0 0 45px;
-				color:#302e2e;
-				text-shadow:1px 2px 0 rgba(0,0,0,0.35);
+				color:#000;
+
 				font:48px/48px "goodcyr-book", Arial, Helvetica, sans-serif;
 				}
 			.section__text {
@@ -337,7 +337,7 @@ a.flag {
 .section.book {
 	height: auto;
 	min-height: auto;
-	padding: 100px 0 60px;
+	padding: 100px 0 120px;
 }
 
 .section.about {
@@ -894,7 +894,7 @@ a.flag {
 		margin:0 0 0 -645px;
 		}
 .slogan {
-	color:#c92772;
+	color:#000;
 	font:54px "goodcyr-book", Arial, Helvetica, sans-serif;
 	}
 
@@ -911,14 +911,14 @@ a.flag {
 		width:100%;
 		vertical-align:top;
 		}
-		.sliderpartners__list, .sliderscenarios__list {
+		.sliderpartners__list {
 			position:relative;
 			white-space:nowrap;
 			}
 		#partners .sliderpartners__list {
 			white-space:normal;
 			}
-		.sliderorgs .sliderpartners__list, .sliderorgs .sliderscenarios__list  {
+		.sliderorgs .sliderpartners__list {
 			height:400px !important;
 			text-align:left;
 			}
@@ -932,6 +932,26 @@ a.flag {
 				text-align:center;
 				}
 
+
+.sliderscenarios.sliderorgs {
+	height:640px;
+	}
+	.sliderscenarios__wrap {
+		display:inline-block;
+		overflow:hidden;
+		padding:0 0 20px;
+		width:100%;
+		vertical-align:top;
+		}
+		.sliderscenarios__list {
+			position:relative;
+			white-space:normal;
+			}
+
+		.sliderorgs .sliderscenarios__list  {
+			height:640px !important;
+			text-align:left;
+			}
 			.sliderorgs .sliderscenarios__item {
 				display:inline-block;
 				margin:0;
@@ -939,6 +959,37 @@ a.flag {
 				width: 980px;
 				text-align:center;
 				}
+
+.scenarios {
+
+}
+	.scenarios__photo {
+		margin:0 auto 10px;
+		width:980px;
+		height:400px;
+		text-align:center;
+		}
+		.scenarios__photo_image {
+			width:980px;
+			height:400px;
+			}
+	.scenarios__meta {
+		width: 500px;
+		text-align: left;
+		float: right;
+		}
+		.scenarios__name {
+			text-transform:uppercase;
+			font:14px "goodcyr-book", Arial, Helvetica, sans-serif;
+			font-weight: bold;
+			margin-bottom: 3px;
+			}
+
+		.scenarios__desc {
+			color:#000;
+			font:12px/15px "goodcyr-book", Arial, Helvetica, sans-serif;
+			}
+
 
 .partner {
 	padding:0 0 100px;
@@ -1291,22 +1342,6 @@ a.flag {
 	.sliderorgs .sliderpartners__item:hover .orgs__desc {
 		visibility:visible;
 		}
-
-.scenarios {
-
-}
-
-	.scenarios__photo {
-		margin:0 auto 23px;
-		width:980px;
-		height:400px;
-		text-align:center;
-		}
-
-		.scenarios__photo_image {
-			width:980px;
-			height:400px;
-			}
 
 
 #share42 a {position:relative;}

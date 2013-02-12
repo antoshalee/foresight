@@ -152,7 +152,7 @@ function scenarios() {
 	// Elems on slide
 	var elemsScreenCount = Math.floor((winW-150)/elemsWidth);
 	var wrapperWidth = elemsScreenCount * elemsWidth;
-	$('.sliderpartners__wrap').css('width', wrapperWidth+'px');
+	$('.sliderscenarios__wrap').css('width', wrapperWidth+'px');
 
 	layerWidth = elemsCount*elemsWidth;
 
