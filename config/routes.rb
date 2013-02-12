@@ -68,6 +68,8 @@ Foresight::Application.routes.draw do
   get "layout"=> 'start#layout'
   post "participate" => 'members#participate'
 
+  get "/scenarios/:scenario" => redirect('/#scenarios')
+
   root :to => 'start#index'
 
   # See how all your routes lay out with "rake routes"
