@@ -13,8 +13,7 @@
               .scenarios
                 .scenarios__photo
                   %img.scenarios__photo_image{:alt => "", :src => "/assets/scenarios/global_city.jpg"}
-                .scenarios__vote
-                  = render "scenarios/vote", scenario: "global_city"
+                = render "scenarios/vote", scenario: "global_city"
                 .scenarios__meta
                   .scenarios__name Глобальный город Сибири
                   .scenarios__desc Красноярск — это ворота для мирового капитала и новых технологий. Он открывает Сибирь миру, а мир Сибири. Для этого он должен стать многоязычным городом, глобальным логистическим узлом и центром международного сотрудничества.
@@ -22,7 +21,7 @@
               .scenarios
                 .scenarios__photo
                   %img.scenarios__photo_image{:alt => "", :src => "/assets/scenarios/oasis.jpg"}
-                  = render "scenarios/vote", scenario: "oasis"
+                = render "scenarios/vote", scenario: "oasis"
                 .scenarios__meta
                   .scenarios__name Оазис комфорта
                   .scenarios__desc Красивый, интересный, удобный город. Ориентированный, в первую очередь, на горожан, а не на промышленные производства. В условиях усиливающейся конкуренции городов за человеческий капитал, Красноярск должен сконцентрироваться на повышении качества жизни: улучшать экологию, развивать общественный транспорт и социальную сферу.
