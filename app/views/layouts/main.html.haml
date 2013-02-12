@@ -8,6 +8,7 @@
       / script src="http://code.jquery.com/jquery-latest.min.js"></script
       =# javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"
       = javascript_include_tag :application
+      = javascript_include_tag "http://kmfuture.ru/assets/share42.js"
       = csrf_meta_tags
       = render 'layouts/ya_metrika'
       - unless flash["return_to"].nil?
@@ -52,11 +53,11 @@
             на базе Управления по молодежной политике администрации города Красноярска в рамках
             %a{:href => "http://www.kmforum.ru/"} Молодежной недели КМФ
         .contacts
-          %p 
-            Контакт-центр: 
+          %p
+            Контакт-центр:
             %span.phone +7 (391) 288-90-03
-          %p 
-            Эл. почта: 
+          %p
+            Эл. почта:
             %a{:href => "mailto:mail@kmfuture.ru"} mail@kmfuture.ru
     #overlay
     = render 'layouts/popups/register'

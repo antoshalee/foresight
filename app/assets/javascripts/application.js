@@ -12,7 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require buttons
+//= require main
+//= require members
+//= require scrollto
+//= require slideit
 
 var showAll = false;
 
