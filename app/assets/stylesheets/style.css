@@ -259,7 +259,7 @@ a.flag {
 			float:right;
 			display:inline-block;
 			vertical-align:top;
-			
+
 			white-space:normal;
 			font:15px/24px "goodcyr-light", Arial, Helvetica, sans-serif;
 			}
@@ -320,6 +320,9 @@ a.flag {
 
 
 .section.main {
+	height: auto;
+	min-height: auto;
+	padding:100px 0 10px 0;
 	background: rgb(240,240,240);
 	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2YwZjBmMCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
 	background: -moz-linear-gradient(top,  rgb(240,240,240) 0%, rgb(255,255,255) 100%);
@@ -330,6 +333,12 @@ a.flag {
 	background: linear-gradient(to bottom,  rgb(240,240,240) 0%,rgb(255,255,255) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f0f0', endColorstr='#ffffff',GradientType=0 );
 	}
+
+.section.book {
+	height: auto;
+	min-height: auto;
+	padding: 100px 0 60px;
+}
 
 .section.about {
 	height:auto;
@@ -730,11 +739,12 @@ a.flag {
 					border-top:1px solid #fff;
 					}
 					.sliderexperts__item:hover .expert__web {
-						
+
 						}
 	.sliderexperts__control,
 	.sliderkrskexperts__control,
-	.sliderorgs__control {
+	.sliderorgs__control,
+	.sliderscenarios__control {
 
 		}
 		.sliderexperts__prev,
@@ -742,7 +752,9 @@ a.flag {
 		.sliderkrskexperts__prev,
 		.sliderkrskexperts__next,
 		.sliderorgs__prev,
-		.sliderorgs__next {
+		.sliderorgs__next,
+		.sliderscenarios__prev,
+		.sliderscenarios__next {
 			position: absolute;
 			top:50%;
 			margin:-75px 0 0;
@@ -756,25 +768,29 @@ a.flag {
 			}
 		.sliderexperts__prev,
 		.sliderkrskexperts__prev,
-		.sliderorgs__prev {
+		.sliderorgs__prev,
+		.sliderscenarios__prev {
 			left:-10px;
 			background:url('/assets/icons/experts-control.png') top right no-repeat;
 			}
 		.sliderexperts__next,
 		.sliderkrskexperts__next,
-		.sliderorgs__next {
+		.sliderorgs__next,
+		.sliderscenarios__next {
 			right:-10px;
 			background:url('/assets/icons/experts-control.png') top left no-repeat;
 			}
 		.sliderexperts__prev:hover,
 		.sliderkrskexperts__prev:hover,
-		.sliderorgs__prev:hover {
+		.sliderorgs__prev:hover,
+		.sliderscenarios__prev:hover {
 			left:0;
 			opacity:1;
 			}
 		.sliderexperts__next:hover,
 		.sliderkrskexperts__next:hover,
-		.sliderorgs__next:hover {
+		.sliderorgs__next:hover,
+		.sliderscenarios__next:hover {
 			right:0;
 			opacity:1;
 			}
@@ -895,14 +911,14 @@ a.flag {
 		width:100%;
 		vertical-align:top;
 		}
-		.sliderpartners__list {
+		.sliderpartners__list, .sliderscenarios__list {
 			position:relative;
 			white-space:nowrap;
 			}
 		#partners .sliderpartners__list {
 			white-space:normal;
 			}
-		.sliderorgs .sliderpartners__list {
+		.sliderorgs .sliderpartners__list, .sliderorgs .sliderscenarios__list  {
 			height:400px !important;
 			text-align:left;
 			}
@@ -913,6 +929,14 @@ a.flag {
 				}
 			.sliderorgs .sliderpartners__item {
 				width:200px;
+				text-align:center;
+				}
+
+			.sliderorgs .sliderscenarios__item {
+				display:inline-block;
+				margin:0;
+				vertical-align:top;
+				width: 980px;
 				text-align:center;
 				}
 
@@ -1267,3 +1291,25 @@ a.flag {
 	.sliderorgs .sliderpartners__item:hover .orgs__desc {
 		visibility:visible;
 		}
+
+.scenarios {
+
+}
+
+	.scenarios__photo {
+		margin:0 auto 23px;
+		width:980px;
+		height:400px;
+		text-align:center;
+		}
+
+		.scenarios__photo_image {
+			width:980px;
+			height:400px;
+			}
+
+
+#share42 a {position:relative;}
+#share42 a span {display: none; position: absolute; z-index: 10; top: 0; left: 100%; height: 19px; margin-left: 5px; padding: 0 5px; background: #FFF; border-radius: 4px; border: 1px solid #AAA; box-shadow: 0 0 5px rgba(0,0,0,0.25); text-align: center; color: #666; font: 12px/20px Arial, sans-serif;}
+#share42 a:hover span {display: block}
+#share42 a span:before {content: ''; position: absolute; top: 50%; left: -5px; margin-top: -3px; width: 5px; height: 7px; background: url(data:image/gif;base64,R0lGODlhBQAHAJEDAKqqqsnJyf///////yH5BAEAAAMALAAAAAAFAAcAAAIMnBEXMijiXlts1lkAADs=) no-repeat;}

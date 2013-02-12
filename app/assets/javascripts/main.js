@@ -16,6 +16,7 @@ function commonInit() {
 	experts();
 	community();
 	orgs();
+	scenarios();
 	popup__init();
 }
 
@@ -137,6 +138,31 @@ function orgs() {
 		$('.sliderorgs__control').hide();
 		$('.sliderpartners__wrap').css('width', (elemsCount*elemsWidth)+'px');
 	}
+}
+
+function scenarios() {
+	$('.sliderorgs__control').show();
+
+	// Variables
+	var layer = $('.sliderorgs .sliderscenarios__list');
+	var elems = $('.sliderorgs .sliderscenarios__item');
+	var elemsCount = elems.size();
+	var elemsWidth = 980;
+
+	// Elems on slide
+	var elemsScreenCount = Math.floor((winW-150)/elemsWidth);
+	var wrapperWidth = elemsScreenCount * elemsWidth;
+	$('.sliderpartners__wrap').css('width', wrapperWidth+'px');
+
+	layerWidth = elemsCount*elemsWidth;
+
+	$('.sliderorgs .sliderscenarios__list').slideIt({
+			'time' : '400',
+			'prev' : '.sliderscenarios__control .sliderscenarios__prev',
+			'next' : '.sliderscenarios__control .sliderscenarios__next'
+	});
+
+
 }
 
 function popup__init() {
